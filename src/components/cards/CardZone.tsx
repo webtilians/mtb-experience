@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { MapPin, Mountain, TrendingUp } from 'lucide-react'
+import { MapPin, TrendingUp } from 'lucide-react'
 import Button from '../ui/Button'
 
 interface CardZoneProps {

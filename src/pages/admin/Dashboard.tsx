@@ -2,8 +2,6 @@ import { Link } from 'react-router-dom'
 import {
   Calendar,
   Users,
-  Home,
-  MapPin,
   Package,
   TrendingUp,
   AlertCircle,
