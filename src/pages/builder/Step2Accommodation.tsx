@@ -5,7 +5,6 @@ import Stepper from '../../components/ui/Stepper'
 import Button from '../../components/ui/Button'
 import CardStay from '../../components/cards/CardStay'
 import Input from '../../components/ui/Input'
-import Select from '../../components/ui/Select'
 
 // Mock data
 const stays = [

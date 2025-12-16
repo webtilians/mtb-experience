@@ -1,5 +1,5 @@
 import { useParams, Link } from 'react-router-dom'
-import { MapPin, Calendar, TrendingUp, Mountain, ArrowRight, CheckCircle } from 'lucide-react'
+import { Calendar, TrendingUp, Mountain, ArrowRight, CheckCircle } from 'lucide-react'
 import Button from '../../components/ui/Button'
 import CardStay from '../../components/cards/CardStay'
 

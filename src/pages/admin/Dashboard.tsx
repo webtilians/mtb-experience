@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom'
 import {
   Calendar,
   Users,
-  Package,
   TrendingUp,
   AlertCircle,
 } from 'lucide-react'

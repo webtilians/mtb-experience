@@ -11,6 +11,7 @@ interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   error?: string
   options: Option[]
   placeholder?: string
+  helpText?: string
 }
 
 const Select = forwardRef<HTMLSelectElement, SelectProps>(
@@ -22,6 +23,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
       placeholder = 'Seleccionar...',
       className = '',
       id,
+      helpText,
       ...props
     },
     ref
@@ -63,6 +65,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
           </select>
           <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-text-secondary pointer-events-none" />
         </div>
+        {helpText && !error && <p className="mt-1.5 text-sm text-text-secondary">{helpText}</p>}
         {error && <p className="mt-1.5 text-sm text-danger">{error}</p>}
       </div>
     )
