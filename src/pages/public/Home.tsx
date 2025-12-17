@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { MapPin, Calendar, Users, ArrowRight, Shield, Map, CheckCircle } from 'lucide-react'
+import { ArrowRight, Shield, Map, CheckCircle, MapPin } from 'lucide-react'
 import Button from '../../components/ui/Button'
 import CardZone from '../../components/cards/CardZone'
 
@@ -104,64 +104,13 @@ export default function Home() {
               Guía local + logística + casas verificadas + extras a medida.
             </p>
 
-            {/* Quick Form */}
-            <div className="bg-surface/95 backdrop-blur-sm rounded-xl p-6 shadow-lg">
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <div className="md:col-span-1">
-                  <label className="block text-sm font-medium text-text-primary mb-1">
-                    Zona
-                  </label>
-                  <div className="flex items-center gap-2 px-3 py-2.5 border border-border rounded-lg">
-                    <MapPin className="w-4 h-4 text-text-secondary" />
-                    <select className="flex-1 bg-transparent text-text-primary focus:outline-none">
-                      <option>Todas las zonas</option>
-                      <option>Montes de Málaga</option>
-                      <option>Vélez-Málaga</option>
-                      <option>Archidona</option>
-                      <option>Marbella</option>
-                      <option>Tarifa</option>
-                      <option>Granada</option>
-                    </select>
-                  </div>
-                </div>
-                <div className="md:col-span-1">
-                  <label className="block text-sm font-medium text-text-primary mb-1">
-                    Fechas
-                  </label>
-                  <div className="flex items-center gap-2 px-3 py-2.5 border border-border rounded-lg">
-                    <Calendar className="w-4 h-4 text-text-secondary" />
-                    <input
-                      type="text"
-                      placeholder="Seleccionar"
-                      className="flex-1 bg-transparent text-text-primary focus:outline-none"
-                    />
-                  </div>
-                </div>
-                <div className="md:col-span-1">
-                  <label className="block text-sm font-medium text-text-primary mb-1">
-                    Riders
-                  </label>
-                  <div className="flex items-center gap-2 px-3 py-2.5 border border-border rounded-lg">
-                    <Users className="w-4 h-4 text-text-secondary" />
-                    <select className="flex-1 bg-transparent text-text-primary focus:outline-none">
-                      <option>4 riders</option>
-                      <option>5 riders</option>
-                      <option>6 riders</option>
-                      <option>7 riders</option>
-                      <option>8 riders</option>
-                    </select>
-                  </div>
-                </div>
-                <div className="md:col-span-1 flex items-end">
-                  <Link to="/planificar" className="w-full">
-                    <Button variant="primary" size="lg" className="w-full">
-                      Continuar
-                      <ArrowRight className="w-4 h-4" />
-                    </Button>
-                  </Link>
-                </div>
-              </div>
-            </div>
+            {/* CTA Button */}
+            <Link to="/planificar">
+              <Button variant="primary" size="lg" className="text-lg px-8 py-4">
+                Empieza tu aventura
+                <ArrowRight className="w-5 h-5" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
