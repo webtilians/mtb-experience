@@ -23,6 +23,15 @@ const featuredZones = [
     type: 'Enduro' as const,
     description: 'La Axarquía: trails únicos entre el mar y la montaña.',
   },
+  {
+    id: 'archidona',
+    title: 'Archidona',
+    image: 'https://images.unsplash.com/photo-1571188654248-7a89213915f7?w=800',
+    tags: ['Salvaje', 'Auténtico', 'Técnico'],
+    level: 'Avanzado' as const,
+    type: 'Enduro' as const,
+    description: 'Comarca Nororiental: trails salvajes y poco transitados.',
+  },
 ]
 
 const steps = [

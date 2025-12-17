@@ -90,6 +90,40 @@ const zoneData: Record<string, {
       { day: 'Día 4', title: 'Trail final y playa', description: 'Último trail y opción de terminar con baño en el mar.' },
     ],
   },
+  'archidona': {
+    id: 'archidona',
+    title: 'Archidona',
+    subtitle: 'Comarca Nororiental: trails salvajes y auténticos',
+    heroImage: 'https://images.unsplash.com/photo-1571188654248-7a89213915f7?w=1920',
+    level: 'Intermedio-Avanzado',
+    type: 'Enduro',
+    bestSeason: 'Octubre - Mayo',
+    runsPerDay: '4-6',
+    description: 'La Comarca Nororiental de Málaga, con Archidona como base, ofrece trails salvajes y poco transitados. Terreno variado que combina sierras calizas, olivares centenarios y senderos históricos. Una zona perfecta para quienes buscan trails auténticos lejos de las masificaciones, con un paisaje que mezcla montaña interior y cultura rural andaluza.',
+    trailforksRegionId: '55706',
+    trailforksUrl: 'https://www.trailforks.com/region/comarca-nororiental-de-malaga-55706/',
+    includes: [
+      'Guía local experto en la zona',
+      'Shuttle a los puntos de inicio',
+      'Planificación de rutas según nivel',
+      'Soporte mecánico básico',
+      'Recomendaciones gastronómicas locales',
+      'Seguro de actividad',
+    ],
+    requirements: [
+      'Nivel intermedio-avanzado',
+      'Bici de enduro (150-170mm)',
+      'Casco obligatorio (integral recomendado)',
+      'Protecciones rodilleras',
+      'Hidratación y snacks',
+    ],
+    itinerary: [
+      { day: 'Día 1', title: 'Llegada y exploración', description: 'Check-in, visita al pueblo y trail de reconocimiento.' },
+      { day: 'Día 2', title: 'Sierra de Archidona', description: 'Trails por la sierra caliza con vistas espectaculares. 1400m de descenso.' },
+      { day: 'Día 3', title: 'Senderos históricos', description: 'Rutas por caminos antiguos entre olivares. 1600m de descenso.' },
+      { day: 'Día 4', title: 'Despedida', description: 'Trail final y opción de visitar Antequera.' },
+    ],
+  },
 }
 
 // Nearby stays for each zone
@@ -140,6 +174,26 @@ const staysByZone: Record<string, Array<{
       capacity: 8,
       priceRange: '130-160€',
       amenities: ['Parking', 'BBQ', 'Jardín tropical'],
+    },
+  ],
+  'archidona': [
+    {
+      id: 'casa-archidona-1',
+      title: 'Casa Rural Sierra Norte',
+      images: ['https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800'],
+      municipality: 'Archidona',
+      capacity: 6,
+      priceRange: '90-120€',
+      amenities: ['Parking', 'Jardín', 'Chimenea'],
+    },
+    {
+      id: 'casa-archidona-2',
+      title: 'Cortijo El Olivo',
+      images: ['https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=800'],
+      municipality: 'Villanueva del Trabuco',
+      capacity: 10,
+      priceRange: '150-190€',
+      amenities: ['Parking', 'Piscina', 'Olivar privado'],
     },
   ],
 }

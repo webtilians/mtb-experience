@@ -25,6 +25,16 @@ const zones = [
     description: 'La Axarquía: trails únicos entre el mar y la montaña. Clima suave todo el año.',
     coords: { lat: 36.7833, lng: -4.1000 },
   },
+  {
+    id: 'archidona',
+    title: 'Archidona',
+    image: 'https://images.unsplash.com/photo-1571188654248-7a89213915f7?w=800',
+    tags: ['Salvaje', 'Auténtico', 'Técnico'],
+    level: 'Avanzado' as const,
+    type: 'Enduro' as const,
+    description: 'Comarca Nororiental: trails salvajes y poco transitados. Paisaje interior andaluz.',
+    coords: { lat: 37.0833, lng: -4.3833 },
+  },
 ]
 
 export default function ZonesMap() {
