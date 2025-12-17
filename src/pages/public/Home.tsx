@@ -115,9 +115,12 @@ export default function Home() {
                     <MapPin className="w-4 h-4 text-text-secondary" />
                     <select className="flex-1 bg-transparent text-text-primary focus:outline-none">
                       <option>Todas las zonas</option>
-                      <option>Ronda</option>
-                      <option>Axarquía</option>
-                      <option>Sierra Nevada</option>
+                      <option>Montes de Málaga</option>
+                      <option>Vélez-Málaga</option>
+                      <option>Archidona</option>
+                      <option>Marbella</option>
+                      <option>Tarifa</option>
+                      <option>Granada</option>
                     </select>
                   </div>
                 </div>

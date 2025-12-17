@@ -590,11 +590,14 @@ export default function ZoneDetail() {
                   </div>
                 </div>
 
+                {/* External Accommodation Search */}
+                <AccommodationButtons locationName={zone.title} />
+
                 {/* Nearby Stays */}
                 {nearbyStays.length > 0 && (
                   <div>
                     <h3 className="font-semibold text-text-primary mb-4">
-                      Alojamientos en la zona
+                      Alojamientos recomendados
                     </h3>
                     <div className="space-y-4">
                       {nearbyStays.map((stay) => (
@@ -609,9 +612,6 @@ export default function ZoneDetail() {
                     </Link>
                   </div>
                 )}
-
-                {/* External Accommodation Search */}
-                <AccommodationButtons locationName={zone.title} />
               </div>
             </div>
           </div>
