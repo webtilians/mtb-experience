@@ -1,0 +1,165 @@
+{
+  "common": {
+    "continue": "Continuar",
+    "back": "Volver",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "viewAll": "Ver todos",
+    "learnMore": "Saber más",
+    "bookNow": "Reservar ahora",
+    "contact": "Contacto",
+    "search": "Buscar"
+  },
+  "nav": {
+    "home": "Inicio",
+    "zones": "Zonas",
+    "stays": "Alojamientos",
+    "planTrip": "Planificar viaje",
+    "login": "Iniciar sesión",
+    "myAccount": "Mi cuenta",
+    "logout": "Cerrar sesión"
+  },
+  "home": {
+    "hero": {
+      "title": "MTB Enduro & DH en Andalucía",
+      "subtitle": "Guía local + logística + casas verificadas + extras a medida.",
+      "cta": "Empieza tu aventura"
+    },
+    "trustBanner": {
+      "certifiedGuides": "Guías locales certificados",
+      "fullLogistics": "Logística completa",
+      "verifiedPartners": "Partners verificados"
+    },
+    "steps": {
+      "title": "Cómo funciona",
+      "subtitle": "Tres pasos para tu aventura perfecta",
+      "step1": {
+        "title": "Elige zona y fechas",
+        "description": "Explora el mapa y selecciona la zona que más te atraiga."
+      },
+      "step2": {
+        "title": "Selecciona alojamiento",
+        "description": "Elige una casa verificada o reserva por tu cuenta en Airbnb/Booking."
+      },
+      "step3": {
+        "title": "Cierra guía y extras",
+        "description": "Añade el pack de guía y los extras que necesites en un checkout sencillo."
+      }
+    },
+    "featuredZones": {
+      "title": "Zonas destacadas",
+      "subtitle": "Descubre los mejores spots de MTB en el sur de España",
+      "viewAll": "Ver todas las zonas"
+    },
+    "cta": {
+      "title": "¿Listo para tu próxima aventura?",
+      "subtitle": "Únete a cientos de riders que ya han descubierto los mejores trails de Andalucía.",
+      "button": "Planificar mi viaje"
+    }
+  },
+  "zones": {
+    "title": "Zonas de riding",
+    "subtitle": "Explora las mejores zonas de MTB en el sur de Andalucía.",
+    "filters": {
+      "filter": "Filtrar",
+      "typeAll": "Tipo: Todos",
+      "levelAll": "Nivel: Todos",
+      "intermediate": "Intermedio",
+      "advanced": "Avanzado"
+    },
+    "noResults": "No hay zonas que coincidan con los filtros seleccionados.",
+    "clearFilters": "Limpiar filtros"
+  },
+  "zoneDetail": {
+    "trails": "Trails",
+    "viewOnTrailforks": "Ver en Trailforks",
+    "trailsDescription": "Explora todos los trails de la zona en el mapa interactivo. Haz clic en cualquier trail para ver detalles, fotos y reseñas.",
+    "mapBy": "Mapa proporcionado por",
+    "whatsIncluded": "Qué incluye",
+    "requirements": "Qué necesitas",
+    "itinerary": "Itinerario típico",
+    "accommodationSearch": "Buscar alojamiento",
+    "searchOnAirbnb": "Buscar en Airbnb",
+    "searchOnBooking": "Buscar en Booking",
+    "recommendedStays": "Alojamientos recomendados",
+    "viewAllStays": "Ver todos los alojamientos",
+    "bookThisZone": "Reservar esta zona",
+    "zoneStats": {
+      "trails": "Trails",
+      "vertical": "Desnivel",
+      "runsPerDay": "Runs/día"
+    }
+  },
+  "stays": {
+    "title": "Alojamientos",
+    "subtitle": "Casas y apartamentos verificados cerca de los mejores trails.",
+    "verifiedStays": "Alojamientos verificados",
+    "externalStays": "Buscar en Airbnb/Booking",
+    "perNight": "/noche",
+    "guests": "huéspedes",
+    "rooms": "habitaciones",
+    "viewDetails": "Ver detalles"
+  },
+  "tripBuilder": {
+    "step1": {
+      "title": "Detalles del viaje",
+      "zone": "Zona",
+      "selectZone": "Selecciona una zona",
+      "dates": "Fechas",
+      "startDate": "Fecha inicio",
+      "endDate": "Fecha fin",
+      "riders": "Número de riders",
+      "ridingType": "Tipo de riding",
+      "level": "Nivel del grupo",
+      "airport": "Aeropuerto de llegada"
+    },
+    "step2": {
+      "title": "Alojamiento",
+      "ourStays": "Nuestros alojamientos",
+      "externalSearch": "Buscar externo",
+      "skipStep": "Saltar este paso"
+    },
+    "step3": {
+      "title": "Guía y servicios",
+      "guidePackages": "Packs de guía",
+      "withoutGuide": "Sin guía"
+    },
+    "step4": {
+      "title": "Extras",
+      "transport": "Transporte",
+      "bikeRental": "Alquiler de bici",
+      "shuttle": "Shuttle",
+      "other": "Otros servicios"
+    },
+    "step5": {
+      "title": "Resumen y pago",
+      "tripSummary": "Resumen del viaje",
+      "total": "Total",
+      "confirmBooking": "Confirmar reserva"
+    }
+  },
+  "footer": {
+    "description": "Tu aventura MTB en el sur de España, con guías locales expertos y logística completa.",
+    "zones": "Zonas",
+    "services": "Servicios",
+    "company": "Empresa",
+    "contact": "Contacto",
+    "about": "Sobre nosotros",
+    "legal": "Aviso legal",
+    "privacy": "Privacidad",
+    "cookies": "Cookies",
+    "copyright": "© 2025 MTB Experience. Todos los derechos reservados."
+  },
+  "levels": {
+    "intermediate": "Intermedio",
+    "advanced": "Avanzado",
+    "beginner": "Principiante"
+  },
+  "types": {
+    "enduro": "Enduro",
+    "dh": "DH"
+  }
+}

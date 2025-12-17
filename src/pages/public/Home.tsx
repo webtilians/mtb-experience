@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight, Shield, Map, CheckCircle, MapPin } from 'lucide-react'
 import Button from '../../components/ui/Button'
 import CardZone from '../../components/cards/CardZone'
+import { useTranslation } from '../../i18n'
 
 // Featured zones - real data
 const featuredZones = [
@@ -61,25 +62,27 @@ const featuredZones = [
   },
 ]
 
-const steps = [
-  {
-    icon: Map,
-    title: 'Elige zona y fechas',
-    description: 'Explora el mapa y selecciona la zona que más te atraiga.',
-  },
-  {
-    icon: MapPin,
-    title: 'Selecciona alojamiento',
-    description: 'Elige una casa verificada o reserva por tu cuenta en Airbnb/Booking.',
-  },
-  {
-    icon: CheckCircle,
-    title: 'Cierra guía y extras',
-    description: 'Añade el pack de guía y los extras que necesites en un checkout sencillo.',
-  },
-]
-
 export default function Home() {
+  const { t } = useTranslation()
+
+  const steps = [
+    {
+      icon: Map,
+      title: t('home.steps.step1.title'),
+      description: t('home.steps.step1.description'),
+    },
+    {
+      icon: MapPin,
+      title: t('home.steps.step2.title'),
+      description: t('home.steps.step2.description'),
+    },
+    {
+      icon: CheckCircle,
+      title: t('home.steps.step3.title'),
+      description: t('home.steps.step3.description'),
+    },
+  ]
+
   return (
     <div>
       {/* Hero Section */}
@@ -98,16 +101,16 @@ export default function Home() {
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 w-full">
           <div className="max-w-2xl">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-              MTB Enduro & DH en Andalucía
+              {t('home.hero.title')}
             </h1>
             <p className="text-xl text-gray-200 mb-8">
-              Guía local + logística + casas verificadas + extras a medida.
+              {t('home.hero.subtitle')}
             </p>
 
             {/* CTA Button */}
             <Link to="/planificar">
               <Button variant="primary" size="lg" className="text-lg px-8 py-4">
-                Empieza tu aventura
+                {t('home.hero.cta')}
                 <ArrowRight className="w-5 h-5" />
               </Button>
             </Link>
@@ -121,15 +124,15 @@ export default function Home() {
           <div className="flex items-center justify-center gap-8 text-sm">
             <span className="flex items-center gap-2 text-text-secondary">
               <Shield className="w-4 h-4 text-accent" />
-              Guías locales certificados
+              {t('home.trustBanner.certifiedGuides')}
             </span>
             <span className="hidden md:flex items-center gap-2 text-text-secondary">
               <Shield className="w-4 h-4 text-accent" />
-              Logística completa
+              {t('home.trustBanner.fullLogistics')}
             </span>
             <span className="flex items-center gap-2 text-text-secondary">
               <Shield className="w-4 h-4 text-accent" />
-              Partners verificados
+              {t('home.trustBanner.verifiedPartners')}
             </span>
           </div>
         </div>
@@ -140,10 +143,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-4">
-              ¿Cómo funciona?
+              {t('home.steps.title')}
             </h2>
             <p className="text-text-secondary max-w-2xl mx-auto">
-              En tres simples pasos, organiza tu viaje MTB perfecto en el sur de España.
+              {t('home.steps.subtitle')}
             </p>
           </div>
 
@@ -154,7 +157,7 @@ export default function Home() {
                   <step.icon className="w-8 h-8 text-accent" />
                 </div>
                 <div className="text-sm text-accent font-semibold mb-2">
-                  Paso {index + 1}
+                  {index + 1}
                 </div>
                 <h3 className="text-xl font-semibold text-text-primary mb-2">
                   {step.title}
@@ -172,15 +175,15 @@ export default function Home() {
           <div className="flex items-center justify-between mb-8">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-text-primary mb-2">
-                Zonas destacadas
+                {t('home.featuredZones.title')}
               </h2>
               <p className="text-text-secondary">
-                Rutas y logística adaptadas a tu nivel.
+                {t('home.featuredZones.subtitle')}
               </p>
             </div>
             <Link to="/zonas">
               <Button variant="ghost">
-                Ver todas
+                {t('home.featuredZones.viewAll')}
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </Link>
@@ -199,10 +202,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20">
           <div className="bg-accent rounded-2xl p-8 md:p-12 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              ¿Listo para tu aventura?
+              {t('home.cta.title')}
             </h2>
             <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-              Reserva donde quieras. Nosotros organizamos el resto.
+              {t('home.cta.subtitle')}
             </p>
             <Link to="/planificar">
               <Button
@@ -210,7 +213,7 @@ export default function Home() {
                 size="lg"
                 className="bg-white text-accent hover:bg-gray-100"
               >
-                Planifica tu viaje
+                {t('home.cta.button')}
                 <ArrowRight className="w-5 h-5" />
               </Button>
             </Link>

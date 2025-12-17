@@ -1,0 +1,165 @@
+{
+  "common": {
+    "continue": "Continue",
+    "back": "Back",
+    "save": "Save",
+    "cancel": "Cancel",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "viewAll": "View all",
+    "learnMore": "Learn more",
+    "bookNow": "Book now",
+    "contact": "Contact",
+    "search": "Search"
+  },
+  "nav": {
+    "home": "Home",
+    "zones": "Zones",
+    "stays": "Stays",
+    "planTrip": "Plan trip",
+    "login": "Log in",
+    "myAccount": "My account",
+    "logout": "Log out"
+  },
+  "home": {
+    "hero": {
+      "title": "MTB Enduro & DH in Andalusia",
+      "subtitle": "Local guide + logistics + verified houses + custom extras.",
+      "cta": "Start your adventure"
+    },
+    "trustBanner": {
+      "certifiedGuides": "Certified local guides",
+      "fullLogistics": "Full logistics",
+      "verifiedPartners": "Verified partners"
+    },
+    "steps": {
+      "title": "How it works",
+      "subtitle": "Three steps to your perfect adventure",
+      "step1": {
+        "title": "Choose zone and dates",
+        "description": "Explore the map and select the zone that attracts you the most."
+      },
+      "step2": {
+        "title": "Select accommodation",
+        "description": "Choose a verified house or book on your own via Airbnb/Booking."
+      },
+      "step3": {
+        "title": "Book guide and extras",
+        "description": "Add the guide package and extras you need in a simple checkout."
+      }
+    },
+    "featuredZones": {
+      "title": "Featured zones",
+      "subtitle": "Discover the best MTB spots in southern Spain",
+      "viewAll": "View all zones"
+    },
+    "cta": {
+      "title": "Ready for your next adventure?",
+      "subtitle": "Join hundreds of riders who have already discovered the best trails in Andalusia.",
+      "button": "Plan my trip"
+    }
+  },
+  "zones": {
+    "title": "Riding zones",
+    "subtitle": "Explore the best MTB zones in southern Andalusia.",
+    "filters": {
+      "filter": "Filter",
+      "typeAll": "Type: All",
+      "levelAll": "Level: All",
+      "intermediate": "Intermediate",
+      "advanced": "Advanced"
+    },
+    "noResults": "No zones match the selected filters.",
+    "clearFilters": "Clear filters"
+  },
+  "zoneDetail": {
+    "trails": "Trails",
+    "viewOnTrailforks": "View on Trailforks",
+    "trailsDescription": "Explore all the trails in the zone on the interactive map. Click on any trail to see details, photos and reviews.",
+    "mapBy": "Map provided by",
+    "whatsIncluded": "What's included",
+    "requirements": "What you need",
+    "itinerary": "Typical itinerary",
+    "accommodationSearch": "Search accommodation",
+    "searchOnAirbnb": "Search on Airbnb",
+    "searchOnBooking": "Search on Booking",
+    "recommendedStays": "Recommended stays",
+    "viewAllStays": "View all stays",
+    "bookThisZone": "Book this zone",
+    "zoneStats": {
+      "trails": "Trails",
+      "vertical": "Vertical",
+      "runsPerDay": "Runs/day"
+    }
+  },
+  "stays": {
+    "title": "Stays",
+    "subtitle": "Verified houses and apartments near the best trails.",
+    "verifiedStays": "Verified stays",
+    "externalStays": "Search on Airbnb/Booking",
+    "perNight": "/night",
+    "guests": "guests",
+    "rooms": "rooms",
+    "viewDetails": "View details"
+  },
+  "tripBuilder": {
+    "step1": {
+      "title": "Trip details",
+      "zone": "Zone",
+      "selectZone": "Select a zone",
+      "dates": "Dates",
+      "startDate": "Start date",
+      "endDate": "End date",
+      "riders": "Number of riders",
+      "ridingType": "Riding type",
+      "level": "Group level",
+      "airport": "Arrival airport"
+    },
+    "step2": {
+      "title": "Accommodation",
+      "ourStays": "Our stays",
+      "externalSearch": "External search",
+      "skipStep": "Skip this step"
+    },
+    "step3": {
+      "title": "Guide and services",
+      "guidePackages": "Guide packages",
+      "withoutGuide": "Without guide"
+    },
+    "step4": {
+      "title": "Extras",
+      "transport": "Transport",
+      "bikeRental": "Bike rental",
+      "shuttle": "Shuttle",
+      "other": "Other services"
+    },
+    "step5": {
+      "title": "Summary and payment",
+      "tripSummary": "Trip summary",
+      "total": "Total",
+      "confirmBooking": "Confirm booking"
+    }
+  },
+  "footer": {
+    "description": "Your MTB adventure in southern Spain, with expert local guides and full logistics.",
+    "zones": "Zones",
+    "services": "Services",
+    "company": "Company",
+    "contact": "Contact",
+    "about": "About us",
+    "legal": "Legal notice",
+    "privacy": "Privacy",
+    "cookies": "Cookies",
+    "copyright": "© 2025 MTB Experience. All rights reserved."
+  },
+  "levels": {
+    "intermediate": "Intermediate",
+    "advanced": "Advanced",
+    "beginner": "Beginner"
+  },
+  "types": {
+    "enduro": "Enduro",
+    "dh": "DH"
+  }
+}

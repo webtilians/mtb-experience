@@ -1,19 +1,21 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, Globe, Mountain } from 'lucide-react'
+import { Menu, X, Mountain } from 'lucide-react'
 import Button from '../ui/Button'
-
-const navItems = [
-  { label: 'Zonas', href: '/zonas' },
-  { label: 'Alojamientos', href: '/alojamientos' },
-  { label: 'FAQ', href: '/faq' },
-  { label: 'Contacto', href: '/contacto' },
-]
+import LanguageSelector from '../ui/LanguageSelector'
+import { useTranslation } from '../../i18n'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [language, setLanguage] = useState<'ES' | 'EN'>('ES')
   const location = useLocation()
+  const { t } = useTranslation()
+
+  const navItems = [
+    { label: t('nav.zones'), href: '/zonas' },
+    { label: t('nav.stays'), href: '/alojamientos' },
+    { label: 'FAQ', href: '/faq' },
+    { label: t('nav.contact'), href: '/contacto' },
+  ]
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-surface/95 backdrop-blur-sm border-b border-border">
@@ -47,18 +49,12 @@ export default function Header() {
           {/* Right side */}
           <div className="hidden md:flex items-center gap-4">
             {/* Language Switcher */}
-            <button
-              onClick={() => setLanguage(language === 'ES' ? 'EN' : 'ES')}
-              className="flex items-center gap-1 text-sm text-text-secondary hover:text-text-primary transition-colors"
-            >
-              <Globe className="w-4 h-4" />
-              {language}
-            </button>
+            <LanguageSelector />
 
             {/* CTA */}
             <Link to="/planificar">
               <Button variant="primary" size="md">
-                Planifica tu viaje
+                {t('nav.planTrip')}
               </Button>
             </Link>
           </div>
@@ -95,10 +91,11 @@ export default function Header() {
                 {item.label}
               </Link>
             ))}
-            <div className="pt-4 border-t border-border">
+            <div className="pt-4 border-t border-border space-y-3">
+              <LanguageSelector />
               <Link to="/planificar" onClick={() => setIsMenuOpen(false)}>
                 <Button variant="primary" size="lg" className="w-full">
-                  Planifica tu viaje
+                  {t('nav.planTrip')}
                 </Button>
               </Link>
             </div>
