@@ -56,6 +56,40 @@ const zoneData: Record<string, {
       { day: 'Día 4', title: 'Sesión final y despedida', description: 'Trail de cierre adaptado al nivel y traslado si es necesario.' },
     ],
   },
+  'velez-malaga': {
+    id: 'velez-malaga',
+    title: 'Vélez-Málaga',
+    subtitle: 'La Axarquía: mar, montaña y trails únicos',
+    heroImage: 'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=1920',
+    level: 'Intermedio',
+    type: 'Enduro',
+    bestSeason: 'Todo el año',
+    runsPerDay: '3-5',
+    description: 'La comarca de la Axarquía ofrece una combinación única de trails con vistas al Mediterráneo y a las montañas. Vélez-Málaga es el punto de partida perfecto para explorar senderos que serpentean entre cultivos de aguacates y mangos, pueblos blancos tradicionales y barrancos espectaculares. El clima suave permite rodar prácticamente todo el año.',
+    trailforksRegionId: '55707',
+    trailforksUrl: 'https://www.trailforks.com/region/velezmalaga-55707/',
+    includes: [
+      'Guía local experto en la zona',
+      'Shuttle a los puntos de inicio',
+      'Planificación de rutas según nivel',
+      'Soporte mecánico básico',
+      'Recomendaciones gastronómicas locales',
+      'Seguro de actividad',
+    ],
+    requirements: [
+      'Nivel intermedio recomendado',
+      'Bici de trail o enduro (130-160mm)',
+      'Casco obligatorio',
+      'Protecciones recomendadas',
+      'Hidratación y snacks',
+    ],
+    itinerary: [
+      { day: 'Día 1', title: 'Llegada y bienvenida', description: 'Check-in, briefing y trail de calentamiento con vistas al mar.' },
+      { day: 'Día 2', title: 'Ruta de los pueblos blancos', description: 'Trails entre Comares, El Borge y Almáchar. 1200m de descenso.' },
+      { day: 'Día 3', title: 'Los barrancos', description: 'Descensos técnicos por los barrancos de la zona. 1500m de descenso.' },
+      { day: 'Día 4', title: 'Trail final y playa', description: 'Último trail y opción de terminar con baño en el mar.' },
+    ],
+  },
 }
 
 // Nearby stays for each zone
@@ -86,6 +120,26 @@ const staysByZone: Record<string, Array<{
       capacity: 8,
       priceRange: '140-170€',
       amenities: ['Parking', 'Piscina', 'Vistas al mar'],
+    },
+  ],
+  'velez-malaga': [
+    {
+      id: 'casa-velez-1',
+      title: 'Casa La Axarquía',
+      images: ['https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800'],
+      municipality: 'Vélez-Málaga',
+      capacity: 6,
+      priceRange: '100-130€',
+      amenities: ['Parking', 'Piscina', 'Vistas al mar'],
+    },
+    {
+      id: 'casa-velez-2',
+      title: 'Cortijo Los Almendros',
+      images: ['https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=800'],
+      municipality: 'Benamocarra',
+      capacity: 8,
+      priceRange: '130-160€',
+      amenities: ['Parking', 'BBQ', 'Jardín tropical'],
     },
   ],
 }

@@ -15,6 +15,16 @@ const zones = [
     description: 'Trails técnicos a 20 minutos de la ciudad con vistas al Mediterráneo. +40 senderos señalizados.',
     coords: { lat: 36.7861, lng: -4.3931 },
   },
+  {
+    id: 'velez-malaga',
+    title: 'Vélez-Málaga',
+    image: 'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800',
+    tags: ['Mar', 'Montaña', 'Flow'],
+    level: 'Intermedio' as const,
+    type: 'Enduro' as const,
+    description: 'La Axarquía: trails únicos entre el mar y la montaña. Clima suave todo el año.',
+    coords: { lat: 36.7833, lng: -4.1000 },
+  },
 ]
 
 export default function ZonesMap() {

@@ -14,6 +14,15 @@ const featuredZones = [
     type: 'Enduro' as const,
     description: 'Trails técnicos a 20 minutos de la ciudad con vistas al Mediterráneo.',
   },
+  {
+    id: 'velez-malaga',
+    title: 'Vélez-Málaga',
+    image: 'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800',
+    tags: ['Mar', 'Montaña', 'Flow'],
+    level: 'Intermedio' as const,
+    type: 'Enduro' as const,
+    description: 'La Axarquía: trails únicos entre el mar y la montaña.',
+  },
 ]
 
 const steps = [
