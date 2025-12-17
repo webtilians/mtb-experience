@@ -7,10 +7,12 @@ import Input from '../../components/ui/Input'
 import Select from '../../components/ui/Select'
 
 const zones = [
-  { value: 'ronda', label: 'Ronda / Serranía' },
-  { value: 'axarquia', label: 'Axarquía' },
-  { value: 'sierra-nevada', label: 'Sierra Nevada / Granada' },
-  { value: 'alpujarra', label: 'La Alpujarra' },
+  { value: 'montes-de-malaga', label: 'Montes de Málaga' },
+  { value: 'velez-malaga', label: 'Vélez-Málaga' },
+  { value: 'archidona', label: 'Archidona' },
+  { value: 'marbella', label: 'Marbella' },
+  { value: 'tarifa', label: 'Tarifa' },
+  { value: 'granada', label: 'Granada' },
 ]
 
 const ridingTypes = [
