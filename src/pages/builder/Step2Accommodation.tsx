@@ -1,10 +1,20 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { ArrowRight, ArrowLeft, ExternalLink, Home } from 'lucide-react'
 import Stepper from '../../components/ui/Stepper'
 import Button from '../../components/ui/Button'
 import CardStay from '../../components/cards/CardStay'
 import Input from '../../components/ui/Input'
+
+// Zonas con sus queries de búsqueda
+const zoneSearchQueries: Record<string, string> = {
+  'montes-de-malaga': 'Montes de Malaga, Malaga, Spain',
+  'velez-malaga': 'Velez-Malaga, Spain',
+  'archidona': 'Archidona, Malaga, Spain',
+  'marbella': 'Marbella, Spain',
+  'tarifa': 'Tarifa, Cadiz, Spain',
+  'granada': 'Sierra Nevada, Granada, Spain',
+}
 
 // Mock data
 const stays = [
@@ -31,6 +41,10 @@ const stays = [
 type TabType = 'verified' | 'external' | 'skip'
 
 export default function Step2Accommodation() {
+  const [searchParams] = useSearchParams()
+  const selectedZoneId = searchParams.get('zone') || 'montes-de-malaga'
+  const zoneQuery = zoneSearchQueries[selectedZoneId] || 'Andalucia, Spain'
+  
   const [activeTab, setActiveTab] = useState<TabType>('verified')
   const [selectedStay, setSelectedStay] = useState<string | null>(null)
   const [externalForm, setExternalForm] = useState({
@@ -39,6 +53,10 @@ export default function Step2Accommodation() {
     arrivalTime: '',
     notes: '',
   })
+
+  // Generar URLs dinámicas
+  const airbnbUrl = `https://www.airbnb.es/s/${encodeURIComponent(zoneQuery)}/homes?query=${encodeURIComponent(zoneQuery)}`
+  const bookingUrl = `https://www.booking.com/searchresults.html?ss=${encodeURIComponent(zoneQuery)}&group_adults=4`
 
   const canContinue =
     activeTab === 'skip' ||
@@ -123,7 +141,7 @@ export default function Step2Accommodation() {
 
             <div className="mt-6 text-center">
               <a
-                href="https://www.airbnb.es"
+                href={airbnbUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-accent hover:underline text-sm inline-flex items-center gap-1"
@@ -137,11 +155,33 @@ export default function Step2Accommodation() {
 
         {activeTab === 'external' && (
           <div className="bg-surface rounded-xl border border-border p-6 md:p-8">
+            {/* Quick links to search platforms */}
+            <div className="flex flex-wrap gap-3 mb-6">
+              <a
+                href={airbnbUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-[#FF5A5F] text-white text-sm font-medium rounded-lg hover:bg-[#E0484D] transition-colors"
+              >
+                Buscar en Airbnb
+                <ExternalLink className="w-3 h-3" />
+              </a>
+              <a
+                href={bookingUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-[#003580] text-white text-sm font-medium rounded-lg hover:bg-[#00264D] transition-colors"
+              >
+                Buscar en Booking
+                <ExternalLink className="w-3 h-3" />
+              </a>
+            </div>
+
             <h2 className="text-lg font-semibold text-text-primary mb-4">
               Datos de tu reserva externa
             </h2>
             <p className="text-sm text-text-secondary mb-6">
-              Puedes reservar en Airbnb/Booking y después indicarnos los datos aquí.
+              Una vez reserves, pega aquí el enlace para que podamos coordinar.
             </p>
 
             <div className="space-y-6">

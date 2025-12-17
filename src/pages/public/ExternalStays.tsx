@@ -1,15 +1,37 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ExternalLink, ArrowRight, Check } from 'lucide-react'
+import { ExternalLink, ArrowRight, Check, MapPin } from 'lucide-react'
 import Button from '../../components/ui/Button'
 import Input from '../../components/ui/Input'
 import Select from '../../components/ui/Select'
 import { useTranslation } from '../../i18n'
 
+// Zonas disponibles con sus nombres para las URLs
+const zones = [
+  { id: 'montes-de-malaga', name: 'Montes de Málaga', searchQuery: 'Montes de Malaga, Malaga, Spain' },
+  { id: 'velez-malaga', name: 'Vélez-Málaga', searchQuery: 'Velez-Malaga, Spain' },
+  { id: 'archidona', name: 'Archidona', searchQuery: 'Archidona, Malaga, Spain' },
+  { id: 'marbella', name: 'Marbella', searchQuery: 'Marbella, Spain' },
+  { id: 'tarifa', name: 'Tarifa', searchQuery: 'Tarifa, Cadiz, Spain' },
+  { id: 'granada', name: 'Granada / Sierra Nevada', searchQuery: 'Sierra Nevada, Granada, Spain' },
+]
+
 export default function ExternalStays() {
   const { t } = useTranslation()
   const [showForm, setShowForm] = useState(false)
   const [formSubmitted, setFormSubmitted] = useState(false)
+  const [selectedZone, setSelectedZone] = useState(zones[0])
+
+  // Generar URLs dinámicas basadas en la zona seleccionada
+  const getAirbnbUrl = (zone: typeof zones[0]) => {
+    const query = encodeURIComponent(zone.searchQuery)
+    return `https://www.airbnb.es/s/${query}/homes?query=${query}`
+  }
+
+  const getBookingUrl = (zone: typeof zones[0]) => {
+    const query = encodeURIComponent(zone.searchQuery)
+    return `https://www.booking.com/searchresults.html?ss=${query}&checkin=&checkout=&group_adults=4`
+  }
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
@@ -57,33 +79,62 @@ export default function ExternalStays() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {!showForm ? (
           <div className="space-y-6">
+            {/* Zone Selector */}
+            <div className="bg-surface rounded-xl border border-border p-6">
+              <label className="flex items-center gap-2 text-sm font-medium text-text-primary mb-3">
+                <MapPin className="w-4 h-4 text-accent" />
+                {t('tripBuilder.step1.zone')}
+              </label>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                {zones.map((zone) => (
+                  <button
+                    key={zone.id}
+                    onClick={() => setSelectedZone(zone)}
+                    className={`p-3 text-sm font-medium rounded-lg border transition-all ${
+                      selectedZone.id === zone.id
+                        ? 'bg-accent text-white border-accent'
+                        : 'bg-surface text-text-primary border-border hover:border-accent'
+                    }`}
+                  >
+                    {zone.name}
+                  </button>
+                ))}
+              </div>
+            </div>
+
             {/* Platform buttons */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <a
-                href="https://www.airbnb.es/s/Andalucia--Spain"
+                href={getAirbnbUrl(selectedZone)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-3 p-6 bg-surface border border-border rounded-xl hover:shadow-md transition-shadow"
+                className="flex flex-col items-center justify-center gap-3 p-6 bg-surface border border-border rounded-xl hover:shadow-md hover:border-[#FF5A5F] transition-all group"
               >
                 <img
                   src="https://upload.wikimedia.org/wikipedia/commons/6/69/Airbnb_Logo_B%C3%A9lo.svg"
                   alt="Airbnb"
                   className="h-8"
                 />
-                <ExternalLink className="w-5 h-5 text-text-secondary" />
+                <span className="text-sm text-text-secondary group-hover:text-[#FF5A5F] flex items-center gap-1">
+                  {t('zoneDetail.searchOnAirbnb')} en {selectedZone.name}
+                  <ExternalLink className="w-4 h-4" />
+                </span>
               </a>
               <a
-                href="https://www.booking.com/region/es/andalucia.html"
+                href={getBookingUrl(selectedZone)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-3 p-6 bg-surface border border-border rounded-xl hover:shadow-md transition-shadow"
+                className="flex flex-col items-center justify-center gap-3 p-6 bg-surface border border-border rounded-xl hover:shadow-md hover:border-[#003580] transition-all group"
               >
                 <img
                   src="https://upload.wikimedia.org/wikipedia/commons/b/be/Booking.com_logo.svg"
                   alt="Booking.com"
                   className="h-6"
                 />
-                <ExternalLink className="w-5 h-5 text-text-secondary" />
+                <span className="text-sm text-text-secondary group-hover:text-[#003580] flex items-center gap-1">
+                  {t('zoneDetail.searchOnBooking')} en {selectedZone.name}
+                  <ExternalLink className="w-4 h-4" />
+                </span>
               </a>
             </div>
 
