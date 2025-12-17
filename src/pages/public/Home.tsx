@@ -41,6 +41,15 @@ const featuredZones = [
     type: 'Enduro' as const,
     description: 'Costa del Sol: trails con vistas al mar y clima perfecto.',
   },
+  {
+    id: 'tarifa',
+    title: 'Tarifa',
+    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800',
+    tags: ['África', 'Viento', 'Aventura'],
+    level: 'Avanzado' as const,
+    type: 'Enduro' as const,
+    description: 'El punto más al sur de Europa: trails con vistas a África.',
+  },
 ]
 
 const steps = [

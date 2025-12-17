@@ -158,6 +158,40 @@ const zoneData: Record<string, {
       { day: 'Día 4', title: 'Trail final y playa', description: 'Último descenso y tarde libre en la playa o Puerto Banús.' },
     ],
   },
+  'tarifa': {
+    id: 'tarifa',
+    title: 'Tarifa',
+    subtitle: 'Donde el Atlántico y el Mediterráneo se encuentran',
+    heroImage: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920',
+    level: 'Intermedio-Avanzado',
+    type: 'Enduro',
+    bestSeason: 'Septiembre - Junio',
+    runsPerDay: '3-5',
+    description: 'Tarifa ofrece una experiencia única en el punto más al sur de Europa continental. Los trails serpentean por las colinas del Parque Natural del Estrecho con vistas simultáneas a África, el Atlántico y el Mediterráneo. El terreno es variado con secciones técnicas de roca, senderos de tierra entre alcornoques y descensos con viento legendario. Una aventura MTB diferente.',
+    trailforksRegionId: '17139',
+    trailforksUrl: 'https://www.trailforks.com/region/tarifa-17139/',
+    includes: [
+      'Guía local experto en la zona',
+      'Shuttle a los puntos de inicio',
+      'Planificación de rutas según nivel',
+      'Soporte mecánico básico',
+      'Recomendaciones gastronómicas locales',
+      'Seguro de actividad',
+    ],
+    requirements: [
+      'Nivel intermedio-avanzado',
+      'Bici de enduro (150-170mm)',
+      'Casco obligatorio (integral recomendado)',
+      'Protecciones rodilleras',
+      'Gafas anti-viento recomendadas',
+    ],
+    itinerary: [
+      { day: 'Día 1', title: 'Llegada y reconocimiento', description: 'Check-in, paseo por el pueblo y trail suave de calentamiento.' },
+      { day: 'Día 2', title: 'Parque del Estrecho', description: 'Trails con vistas a África y al mar. 1200m de descenso.' },
+      { day: 'Día 3', title: 'Los alcornocales', description: 'Descensos técnicos entre bosques de alcornoques. 1400m de descenso.' },
+      { day: 'Día 4', title: 'Trail final', description: 'Último descenso con vistas al estrecho y tarde libre para kitesurf o playa.' },
+    ],
+  },
 }
 
 // Nearby stays for each zone
@@ -248,6 +282,26 @@ const staysByZone: Record<string, Array<{
       capacity: 8,
       priceRange: '150-200€',
       amenities: ['Parking', 'Jardín', 'BBQ'],
+    },
+  ],
+  'tarifa': [
+    {
+      id: 'casa-tarifa-1',
+      title: 'Casa El Estrecho',
+      images: ['https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800'],
+      municipality: 'Tarifa',
+      capacity: 6,
+      priceRange: '120-160€',
+      amenities: ['Parking', 'Terraza', 'Vistas a África'],
+    },
+    {
+      id: 'casa-tarifa-2',
+      title: 'Cortijo Los Alcornoques',
+      images: ['https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800'],
+      municipality: 'Facinas',
+      capacity: 8,
+      priceRange: '140-180€',
+      amenities: ['Parking', 'Piscina', 'Campo privado'],
     },
   ],
 }

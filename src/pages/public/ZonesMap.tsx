@@ -45,6 +45,16 @@ const zones = [
     description: 'Costa del Sol: trails con vistas al mar. Sierra Blanca y clima perfecto todo el año.',
     coords: { lat: 36.5100, lng: -4.8824 },
   },
+  {
+    id: 'tarifa',
+    title: 'Tarifa',
+    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800',
+    tags: ['África', 'Viento', 'Aventura'],
+    level: 'Avanzado' as const,
+    type: 'Enduro' as const,
+    description: 'El punto más al sur de Europa: trails con vistas a África y el Estrecho.',
+    coords: { lat: 36.0143, lng: -5.6044 },
+  },
 ]
 
 export default function ZonesMap() {
