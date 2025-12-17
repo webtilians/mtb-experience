@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { MapPin, List, Filter } from 'lucide-react'
+import { Filter } from 'lucide-react'
 import CardZone from '../../components/cards/CardZone'
 import Button from '../../components/ui/Button'
 
@@ -13,7 +13,6 @@ const zones = [
     level: 'Intermedio' as const,
     type: 'Enduro' as const,
     description: 'Trails técnicos a 20 minutos de la ciudad con vistas al Mediterráneo. +40 senderos señalizados.',
-    coords: { lat: 36.7861, lng: -4.3931 },
   },
   {
     id: 'velez-malaga',
@@ -23,7 +22,6 @@ const zones = [
     level: 'Intermedio' as const,
     type: 'Enduro' as const,
     description: 'La Axarquía: trails únicos entre el mar y la montaña. Clima suave todo el año.',
-    coords: { lat: 36.7833, lng: -4.1000 },
   },
   {
     id: 'archidona',
@@ -33,7 +31,6 @@ const zones = [
     level: 'Avanzado' as const,
     type: 'Enduro' as const,
     description: 'Comarca Nororiental: trails salvajes y poco transitados. Paisaje interior andaluz.',
-    coords: { lat: 37.0833, lng: -4.3833 },
   },
   {
     id: 'marbella',
@@ -43,7 +40,6 @@ const zones = [
     level: 'Intermedio' as const,
     type: 'Enduro' as const,
     description: 'Costa del Sol: trails con vistas al mar. Sierra Blanca y clima perfecto todo el año.',
-    coords: { lat: 36.5100, lng: -4.8824 },
   },
   {
     id: 'tarifa',
@@ -53,7 +49,6 @@ const zones = [
     level: 'Avanzado' as const,
     type: 'Enduro' as const,
     description: 'El punto más al sur de Europa: trails con vistas a África y el Estrecho.',
-    coords: { lat: 36.0143, lng: -5.6044 },
   },
   {
     id: 'granada',
@@ -63,13 +58,10 @@ const zones = [
     level: 'Avanzado' as const,
     type: 'Enduro' as const,
     description: 'Descensos épicos desde Sierra Nevada. Hasta 2000m de desnivel por bajada.',
-    coords: { lat: 37.1773, lng: -3.5986 },
   },
 ]
 
 export default function ZonesMap() {
-  const [viewMode, setViewMode] = useState<'map' | 'list'>('map')
-  const [selectedZone, setSelectedZone] = useState<string | null>(null)
   const [filterType, setFilterType] = useState<'all' | 'Enduro' | 'DH'>('all')
   const [filterLevel, setFilterLevel] = useState<'all' | 'Intermedio' | 'Avanzado'>('all')
 
@@ -93,238 +85,61 @@ export default function ZonesMap() {
         </div>
       </div>
 
-      {/* Filters & View Toggle */}
+      {/* Filters */}
       <div className="bg-surface border-b border-border sticky top-16 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 py-4">
-          <div className="flex items-center justify-between">
-            {/* Filters */}
-            <div className="flex items-center gap-4">
-              <div className="flex items-center gap-2">
-                <Filter className="w-4 h-4 text-text-secondary" />
-                <span className="text-sm text-text-secondary hidden sm:inline">Filtrar:</span>
-              </div>
-              <div className="flex gap-2">
-                <select
-                  value={filterType}
-                  onChange={(e) => setFilterType(e.target.value as any)}
-                  className="px-3 py-1.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-accent"
-                >
-                  <option value="all">Tipo: Todos</option>
-                  <option value="Enduro">Enduro</option>
-                  <option value="DH">DH</option>
-                </select>
-                <select
-                  value={filterLevel}
-                  onChange={(e) => setFilterLevel(e.target.value as any)}
-                  className="px-3 py-1.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-accent"
-                >
-                  <option value="all">Nivel: Todos</option>
-                  <option value="Intermedio">Intermedio</option>
-                  <option value="Avanzado">Avanzado</option>
-                </select>
-              </div>
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2">
+              <Filter className="w-4 h-4 text-text-secondary" />
+              <span className="text-sm text-text-secondary hidden sm:inline">Filtrar:</span>
             </div>
-
-            {/* View Toggle */}
-            <div className="flex items-center gap-2 bg-gray-100 rounded-lg p-1">
-              <button
-                onClick={() => setViewMode('map')}
-                className={`p-2 rounded-md transition-colors ${
-                  viewMode === 'map'
-                    ? 'bg-surface shadow-sm text-text-primary'
-                    : 'text-text-secondary hover:text-text-primary'
-                }`}
+            <div className="flex gap-2">
+              <select
+                value={filterType}
+                onChange={(e) => setFilterType(e.target.value as any)}
+                className="px-3 py-1.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-accent"
               >
-                <MapPin className="w-5 h-5" />
-              </button>
-              <button
-                onClick={() => setViewMode('list')}
-                className={`p-2 rounded-md transition-colors ${
-                  viewMode === 'list'
-                    ? 'bg-surface shadow-sm text-text-primary'
-                    : 'text-text-secondary hover:text-text-primary'
-                }`}
+                <option value="all">Tipo: Todos</option>
+                <option value="Enduro">Enduro</option>
+                <option value="DH">DH</option>
+              </select>
+              <select
+                value={filterLevel}
+                onChange={(e) => setFilterLevel(e.target.value as any)}
+                className="px-3 py-1.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-accent"
               >
-                <List className="w-5 h-5" />
-              </button>
+                <option value="all">Nivel: Todos</option>
+                <option value="Intermedio">Intermedio</option>
+                <option value="Avanzado">Avanzado</option>
+              </select>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Content */}
-      <div className="max-w-7xl mx-auto">
-        {viewMode === 'map' ? (
-          <div className="flex flex-col lg:flex-row">
-            {/* Map */}
-            <div className="lg:flex-1 h-[400px] lg:h-[calc(100vh-200px)] relative overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100">
-              {/* Andalucía SVG Map */}
-              <svg 
-                viewBox="0 0 800 500" 
-                className="absolute inset-0 w-full h-full"
-                preserveAspectRatio="xMidYMid meet"
-              >
-                {/* Sea */}
-                <rect x="0" y="350" width="800" height="150" fill="#bae6fd" opacity="0.5"/>
-                <text x="100" y="420" fill="#0369a1" fontSize="14" opacity="0.6">Mar Mediterráneo</text>
-                <text x="50" y="480" fill="#0369a1" fontSize="14" opacity="0.6">Océano Atlántico</text>
-                <text x="650" y="480" fill="#0369a1" fontSize="12" opacity="0.5">África</text>
-                
-                {/* Andalucía silhouette - simplified */}
-                <path 
-                  d="M50,280 
-                     C80,250 120,220 180,200 
-                     C240,180 300,170 360,160 
-                     C420,150 480,145 540,150 
-                     C600,155 660,170 720,190 
-                     C750,200 770,220 780,250
-                     C785,280 780,310 760,340
-                     C740,360 700,375 650,385
-                     C600,395 550,400 500,395
-                     C450,390 400,380 350,375
-                     C300,370 250,365 200,355
-                     C150,345 100,330 70,310
-                     C50,295 45,285 50,280Z"
-                  fill="#f0fdf4"
-                  stroke="#16a34a"
-                  strokeWidth="2"
-                  opacity="0.8"
-                />
-                
-                {/* Province labels */}
-                <text x="120" y="320" fill="#166534" fontSize="11" fontWeight="500" opacity="0.7">Cádiz</text>
-                <text x="220" y="290" fill="#166534" fontSize="11" fontWeight="500" opacity="0.7">Sevilla</text>
-                <text x="350" y="270" fill="#166534" fontSize="11" fontWeight="500" opacity="0.7">Córdoba</text>
-                <text x="480" y="300" fill="#166534" fontSize="11" fontWeight="500" opacity="0.7">Málaga</text>
-                <text x="620" y="260" fill="#166534" fontSize="11" fontWeight="500" opacity="0.7">Granada</text>
-                <text x="700" y="300" fill="#166534" fontSize="11" fontWeight="500" opacity="0.7">Almería</text>
-                
-                {/* Mountain ranges */}
-                <text x="400" y="220" fill="#854d0e" fontSize="10" opacity="0.5" fontStyle="italic">Sierra Nevada</text>
-                <text x="250" y="250" fill="#854d0e" fontSize="9" opacity="0.4" fontStyle="italic">Serranía de Ronda</text>
-              </svg>
-              
-              {/* Grid overlay for better visibility */}
-              <div className="absolute inset-0" style={{
-                backgroundImage: 'linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px)',
-                backgroundSize: '50px 50px'
-              }} />
+      {/* Zones Grid */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 py-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredZones.map((zone) => (
+            <CardZone key={zone.id} {...zone} />
+          ))}
+        </div>
 
-              {/* Zone pins with real approximate positions */}
-              {filteredZones.map((zone) => {
-                // Positions mapped to SVG coordinates converted to percentages
-                const positionMap: Record<string, { left: string; top: string }> = {
-                  'montes-de-malaga': { left: '58%', top: '62%' },
-                  'velez-malaga': { left: '66%', top: '65%' },
-                  'archidona': { left: '54%', top: '52%' },
-                  'marbella': { left: '45%', top: '70%' },
-                  'tarifa': { left: '18%', top: '78%' },
-                  'granada': { left: '72%', top: '48%' },
-                }
-                const pos = positionMap[zone.id] || { left: '50%', top: '50%' }
-                
-                return (
-                  <button
-                    key={zone.id}
-                    onClick={() => setSelectedZone(zone.id)}
-                    className={`absolute flex flex-col items-center transform -translate-x-1/2 -translate-y-full transition-all duration-200 group ${
-                      selectedZone === zone.id ? 'z-20 scale-110' : 'z-10 hover:z-20 hover:scale-105'
-                    }`}
-                    style={{ left: pos.left, top: pos.top }}
-                  >
-                    {/* Pin */}
-                    <div className={`relative ${
-                      selectedZone === zone.id 
-                        ? 'text-accent' 
-                        : 'text-forest-700 group-hover:text-accent'
-                    }`}>
-                      <svg width="40" height="50" viewBox="0 0 40 50" fill="currentColor" className="drop-shadow-lg">
-                        <path d="M20 0C8.954 0 0 8.954 0 20c0 11.046 20 30 20 30s20-18.954 20-30C40 8.954 31.046 0 20 0zm0 28c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z"/>
-                      </svg>
-                      <div className={`absolute top-2.5 left-1/2 -translate-x-1/2 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold ${
-                        selectedZone === zone.id 
-                          ? 'bg-white text-accent' 
-                          : 'bg-white text-forest-700 group-hover:text-accent'
-                      }`}>
-                        {zone.level === 'Avanzado' ? '🔥' : '⭐'}
-                      </div>
-                    </div>
-                    {/* Label */}
-                    <div className={`mt-1 px-2 py-1 rounded-md text-xs font-semibold whitespace-nowrap shadow-md ${
-                      selectedZone === zone.id 
-                        ? 'bg-accent text-white' 
-                        : 'bg-white text-text-primary group-hover:bg-accent group-hover:text-white'
-                    }`}>
-                      {zone.title}
-                    </div>
-                  </button>
-                )
-              })}
-
-              {/* Legend */}
-              <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm rounded-lg p-3 shadow-lg text-sm">
-                <p className="font-semibold text-text-primary mb-2">Leyenda</p>
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2">
-                    <span>⭐</span>
-                    <span className="text-text-secondary">Intermedio</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <span>🔥</span>
-                    <span className="text-text-secondary">Avanzado</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Zoom hint */}
-              <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-2 shadow-lg text-xs text-text-secondary">
-                Haz clic en una zona para ver detalles
-              </div>
-            </div>
-
-            {/* Sidebar */}
-            <div className="lg:w-96 bg-surface border-l border-border overflow-y-auto lg:h-[calc(100vh-200px)]">
-              <div className="p-4 space-y-4">
-                {filteredZones.map((zone) => (
-                  <div
-                    key={zone.id}
-                    className={`transition-all ${
-                      selectedZone === zone.id ? 'ring-2 ring-accent rounded-xl' : ''
-                    }`}
-                    onClick={() => setSelectedZone(zone.id)}
-                  >
-                    <CardZone {...zone} size="sm" />
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        ) : (
-          /* List View */
-          <div className="px-4 sm:px-6 lg:px-20 py-8">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredZones.map((zone) => (
-                <CardZone key={zone.id} {...zone} />
-              ))}
-            </div>
-
-            {filteredZones.length === 0 && (
-              <div className="text-center py-12">
-                <p className="text-text-secondary">
-                  No hay zonas que coincidan con los filtros seleccionados.
-                </p>
-                <Button
-                  variant="ghost"
-                  className="mt-4"
-                  onClick={() => {
-                    setFilterType('all')
-                    setFilterLevel('all')
-                  }}
-                >
-                  Limpiar filtros
-                </Button>
-              </div>
-            )}
+        {filteredZones.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-text-secondary">
+              No hay zonas que coincidan con los filtros seleccionados.
+            </p>
+            <Button
+              variant="ghost"
+              className="mt-4"
+              onClick={() => {
+                setFilterType('all')
+                setFilterLevel('all')
+              }}
+            >
+              Limpiar filtros
+            </Button>
           </div>
         )}
       </div>
