@@ -1,21 +1,24 @@
 import { Link } from 'react-router-dom'
 import { Mountain, Instagram, Mail } from 'lucide-react'
 import WhatsAppButton from '../ui/WhatsAppButton'
-
-const legalLinks = [
-  { label: 'Términos y condiciones', href: '/terminos' },
-  { label: 'Política de privacidad', href: '/privacidad' },
-  { label: 'Política de cancelación', href: '/cancelacion' },
-]
-
-const navLinks = [
-  { label: 'Zonas', href: '/zonas' },
-  { label: 'Alojamientos', href: '/alojamientos' },
-  { label: 'FAQ', href: '/faq' },
-  { label: 'Contacto', href: '/contacto' },
-]
+import { useTranslation } from '../../i18n'
 
 export default function Footer() {
+  const { t } = useTranslation()
+
+  const legalLinks = [
+    { label: t('legal.terms.title'), href: '/terminos' },
+    { label: t('legal.privacy.title'), href: '/privacidad' },
+    { label: t('legal.cancellation.title'), href: '/cancelacion' },
+  ]
+
+  const navLinks = [
+    { label: t('nav.zones'), href: '/zonas' },
+    { label: t('nav.stays'), href: '/alojamientos' },
+    { label: t('nav.faq'), href: '/faq' },
+    { label: t('nav.contact'), href: '/contacto' },
+  ]
+
   return (
     <footer className="bg-text-primary text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 py-12">
@@ -29,13 +32,13 @@ export default function Footer() {
               </span>
             </Link>
             <p className="text-gray-400 text-sm">
-              Guía local + logística + casas verificadas + extras a medida en Andalucía.
+              {t('footer.description')}
             </p>
           </div>
 
           {/* Navigation */}
           <div>
-            <h4 className="font-semibold mb-4">Navegación</h4>
+            <h4 className="font-semibold mb-4">{t('nav.home')}</h4>
             <ul className="space-y-2">
               {navLinks.map((link) => (
                 <li key={link.href}>
@@ -52,7 +55,7 @@ export default function Footer() {
 
           {/* Legal */}
           <div>
-            <h4 className="font-semibold mb-4">Legal</h4>
+            <h4 className="font-semibold mb-4">{t('footer.legal')}</h4>
             <ul className="space-y-2">
               {legalLinks.map((link) => (
                 <li key={link.href}>
@@ -69,7 +72,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-semibold mb-4">Contacto</h4>
+            <h4 className="font-semibold mb-4">{t('footer.contact')}</h4>
             <div className="space-y-3">
               <WhatsAppButton variant="footer" />
               <a
@@ -96,10 +99,10 @@ export default function Footer() {
         <div className="mt-12 pt-8 border-t border-gray-700">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} MTB Experience. Todos los derechos reservados.
+              © {new Date().getFullYear()} MTB Experience. {t('footer.rights')}
             </p>
             <p className="text-gray-500 text-xs">
-              Los servicios de alojamiento y transporte son prestados por terceros colaboradores.
+              {t('footer.thirdParty')}
             </p>
           </div>
         </div>

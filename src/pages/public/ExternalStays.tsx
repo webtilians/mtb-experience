@@ -4,8 +4,10 @@ import { ExternalLink, ArrowRight, Check } from 'lucide-react'
 import Button from '../../components/ui/Button'
 import Input from '../../components/ui/Input'
 import Select from '../../components/ui/Select'
+import { useTranslation } from '../../i18n'
 
 export default function ExternalStays() {
+  const { t } = useTranslation()
   const [showForm, setShowForm] = useState(false)
   const [formSubmitted, setFormSubmitted] = useState(false)
 
@@ -22,14 +24,14 @@ export default function ExternalStays() {
             <Check className="w-8 h-8 text-accent" />
           </div>
           <h1 className="text-2xl font-bold text-text-primary mb-4">
-            ¡Perfecto!
+            {t('externalStays.success.title')}
           </h1>
           <p className="text-text-secondary mb-8">
-            Ahora elige tu pack de guía y los extras que necesites.
+            {t('externalStays.success.message')}
           </p>
           <Link to="/planificar/guia">
             <Button variant="primary" size="lg">
-              Continuar con guía y extras
+              {t('externalStays.success.cta')}
               <ArrowRight className="w-4 h-4" />
             </Button>
           </Link>
@@ -44,10 +46,10 @@ export default function ExternalStays() {
       <div className="bg-surface border-b border-border">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
           <h1 className="text-3xl font-bold text-text-primary mb-2">
-            Reserva el alojamiento donde quieras
+            {t('externalStays.title')}
           </h1>
           <p className="text-text-secondary">
-            Puedes reservar en Airbnb/Booking. Después vuelve aquí para cerrar guía y extras.
+            {t('externalStays.subtitle')}
           </p>
         </div>
       </div>
@@ -88,14 +90,14 @@ export default function ExternalStays() {
             <div className="text-center py-8">
               <div className="w-12 h-px bg-border mx-auto mb-4" />
               <p className="text-text-secondary mb-6">
-                ¿Ya has reservado tu alojamiento?
+                {t('externalStays.alreadyBooked')}
               </p>
               <Button
                 variant="primary"
                 size="lg"
                 onClick={() => setShowForm(true)}
               >
-                Ya he reservado alojamiento
+                {t('externalStays.alreadyBookedButton')}
               </Button>
             </div>
           </div>
@@ -103,29 +105,29 @@ export default function ExternalStays() {
           /* Form */
           <div className="bg-surface rounded-xl border border-border p-6 md:p-8">
             <h2 className="text-xl font-semibold text-text-primary mb-6">
-              Datos de tu reserva externa
+              {t('externalStays.form.title')}
             </h2>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <Input
-                label="Link del anuncio o confirmación"
+                label={t('externalStays.form.link')}
                 placeholder="https://www.airbnb.es/rooms/..."
-                helpText="Pega el enlace de tu reserva o del anuncio"
+                helpText={t('externalStays.form.linkHelp')}
               />
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Input
-                  label="Fecha de llegada"
+                  label={t('externalStays.form.checkIn')}
                   type="date"
                 />
                 <Input
-                  label="Fecha de salida"
+                  label={t('externalStays.form.checkOut')}
                   type="date"
                 />
               </div>
 
               <Select
-                label="Número de riders"
+                label={t('externalStays.form.riders')}
                 options={[
                   { value: '4', label: '4 riders' },
                   { value: '5', label: '5 riders' },
@@ -136,29 +138,29 @@ export default function ExternalStays() {
               />
 
               <Input
-                label="Municipio / zona"
-                placeholder="Ej: Ronda, Cómpeta, Capileira..."
+                label={t('externalStays.form.location')}
+                placeholder={t('externalStays.form.locationPlaceholder')}
               />
 
               <Input
-                label="Hora de llegada (opcional)"
-                placeholder="Ej: 15:00"
+                label={t('externalStays.form.arrivalTime')}
+                placeholder={t('externalStays.form.arrivalTimePlaceholder')}
               />
 
               <div>
                 <label className="block text-sm font-medium text-text-primary mb-1.5">
-                  Notas adicionales (opcional)
+                  {t('externalStays.form.notes')}
                 </label>
                 <textarea
                   rows={3}
                   className="w-full px-4 py-2.5 bg-surface border border-border rounded-lg text-text-primary placeholder-text-secondary focus:outline-none focus:ring-2 focus:ring-accent"
-                  placeholder="Cualquier información adicional que debamos saber..."
+                  placeholder={t('externalStays.form.notesPlaceholder')}
                 />
               </div>
 
               <div className="pt-4">
                 <Button type="submit" variant="primary" size="lg" className="w-full">
-                  Continuar con guía y extras
+                  {t('externalStays.success.cta')}
                   <ArrowRight className="w-4 h-4" />
                 </Button>
               </div>
@@ -169,8 +171,7 @@ export default function ExternalStays() {
         {/* Info note */}
         <div className="mt-8 p-4 bg-gray-50 rounded-lg">
           <p className="text-sm text-text-secondary">
-            <strong>Nota:</strong> La reserva del alojamiento se hace en la plataforma externa.
-            Nosotros nos encargamos de coordinar guía, transporte y extras para que tu viaje sea perfecto.
+            <strong>{t('common.note')}:</strong> {t('externalStays.note')}
           </p>
         </div>
       </div>

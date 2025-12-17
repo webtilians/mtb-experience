@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Filter } from 'lucide-react'
 import CardZone from '../../components/cards/CardZone'
 import Button from '../../components/ui/Button'
+import { useTranslation } from '../../i18n'
 
 // Zones data - real zones only
 const zones = [
@@ -62,6 +63,7 @@ const zones = [
 ]
 
 export default function ZonesMap() {
+  const { t } = useTranslation()
   const [filterType, setFilterType] = useState<'all' | 'Enduro' | 'DH'>('all')
   const [filterLevel, setFilterLevel] = useState<'all' | 'Intermedio' | 'Avanzado'>('all')
 
@@ -77,10 +79,10 @@ export default function ZonesMap() {
       <div className="bg-surface border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-20 py-6">
           <h1 className="text-3xl font-bold text-text-primary mb-2">
-            Zonas de riding
+            {t('zones.title')}
           </h1>
           <p className="text-text-secondary">
-            Explora las mejores zonas de MTB en el sur de Andalucía.
+            {t('zones.subtitle')}
           </p>
         </div>
       </div>
@@ -91,7 +93,7 @@ export default function ZonesMap() {
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2">
               <Filter className="w-4 h-4 text-text-secondary" />
-              <span className="text-sm text-text-secondary hidden sm:inline">Filtrar:</span>
+              <span className="text-sm text-text-secondary hidden sm:inline">{t('zones.filters.filter')}:</span>
             </div>
             <div className="flex gap-2">
               <select
@@ -99,18 +101,18 @@ export default function ZonesMap() {
                 onChange={(e) => setFilterType(e.target.value as any)}
                 className="px-3 py-1.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-accent"
               >
-                <option value="all">Tipo: Todos</option>
-                <option value="Enduro">Enduro</option>
-                <option value="DH">DH</option>
+                <option value="all">{t('zones.filters.typeAll')}</option>
+                <option value="Enduro">{t('zones.filters.enduro')}</option>
+                <option value="DH">{t('zones.filters.dh')}</option>
               </select>
               <select
                 value={filterLevel}
                 onChange={(e) => setFilterLevel(e.target.value as any)}
                 className="px-3 py-1.5 border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-accent"
               >
-                <option value="all">Nivel: Todos</option>
-                <option value="Intermedio">Intermedio</option>
-                <option value="Avanzado">Avanzado</option>
+                <option value="all">{t('zones.filters.levelAll')}</option>
+                <option value="Intermedio">{t('zones.filters.intermediate')}</option>
+                <option value="Avanzado">{t('zones.filters.advanced')}</option>
               </select>
             </div>
           </div>
@@ -128,7 +130,7 @@ export default function ZonesMap() {
         {filteredZones.length === 0 && (
           <div className="text-center py-12">
             <p className="text-text-secondary">
-              No hay zonas que coincidan con los filtros seleccionados.
+              {t('zones.noResults')}
             </p>
             <Button
               variant="ghost"
@@ -138,7 +140,7 @@ export default function ZonesMap() {
                 setFilterLevel('all')
               }}
             >
-              Limpiar filtros
+              {t('zones.clearFilters')}
             </Button>
           </div>
         )}

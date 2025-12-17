@@ -11,7 +11,28 @@
     "learnMore": "Learn more",
     "bookNow": "Book now",
     "contact": "Contact",
-    "search": "Search"
+    "search": "Search",
+    "send": "Send",
+    "select": "Select",
+    "from": "From",
+    "perNight": "/night",
+    "perPerson": "/person",
+    "perDay": "/day",
+    "guests": "guests",
+    "rooms": "rooms",
+    "included": "Included",
+    "optional": "Optional",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "free": "Free",
+    "required": "Required",
+    "step": "Step",
+    "close": "Close",
+    "add": "Add",
+    "remove": "Remove",
+    "selected": "Selected",
+    "nights": "nights",
+    "days": "days"
   },
   "nav": {
     "home": "Home",
@@ -20,7 +41,9 @@
     "planTrip": "Plan trip",
     "login": "Log in",
     "myAccount": "My account",
-    "logout": "Log out"
+    "logout": "Log out",
+    "faq": "FAQ",
+    "contact": "Contact"
   },
   "home": {
     "hero": {
@@ -34,7 +57,7 @@
       "verifiedPartners": "Verified partners"
     },
     "steps": {
-      "title": "How it works",
+      "title": "How does it work?",
       "subtitle": "Three steps to your perfect adventure",
       "step1": {
         "title": "Choose zone and dates",
@@ -68,7 +91,9 @@
       "typeAll": "Type: All",
       "levelAll": "Level: All",
       "intermediate": "Intermediate",
-      "advanced": "Advanced"
+      "advanced": "Advanced",
+      "enduro": "Enduro",
+      "dh": "DH"
     },
     "noResults": "No zones match the selected filters.",
     "clearFilters": "Clear filters"
@@ -101,9 +126,34 @@
     "perNight": "/night",
     "guests": "guests",
     "rooms": "rooms",
-    "viewDetails": "View details"
+    "viewDetails": "View details",
+    "features": "Features",
+    "location": "Location",
+    "availability": "Availability",
+    "bookNow": "Book now",
+    "checkIn": "Check-in",
+    "checkOut": "Check-out",
+    "nearbyTrails": "Nearby trails",
+    "distanceToTrails": "Distance to trails",
+    "amenities": "Amenities",
+    "description": "Description",
+    "rules": "House rules",
+    "contact": "Contact"
+  },
+  "externalStays": {
+    "title": "Find your own accommodation",
+    "subtitle": "If you prefer to book on your own via Airbnb, Booking or another platform, we provide direct links.",
+    "searchTips": "Search tips",
+    "tip1": "Search near the main trailheads",
+    "tip2": "Make sure there's space for storing bikes",
+    "tip3": "Check the cancellation policy",
+    "searchPlaceholder": "E.g.: Ronda, Cómpeta, Capileira...",
+    "searchButton": "Search",
+    "recommendedAreas": "Recommended areas",
+    "orSearchOn": "Or search directly on"
   },
   "tripBuilder": {
+    "title": "Plan your adventure",
     "step1": {
       "title": "Trip details",
       "zone": "Zone",
@@ -114,44 +164,376 @@
       "riders": "Number of riders",
       "ridingType": "Riding type",
       "level": "Group level",
-      "airport": "Arrival airport"
+      "airport": "Arrival airport",
+      "selectAirport": "Select airport"
     },
     "step2": {
       "title": "Accommodation",
       "ourStays": "Our stays",
       "externalSearch": "External search",
-      "skipStep": "Skip this step"
+      "skipStep": "Skip this step",
+      "selectedStay": "Selected stay",
+      "noStaysFound": "No stays available for this zone"
     },
     "step3": {
       "title": "Guide and services",
       "guidePackages": "Guide packages",
-      "withoutGuide": "Without guide"
+      "withoutGuide": "Without guide",
+      "recommended": "Recommended",
+      "packBasic": "Basic Pack",
+      "packFull": "Full Pack",
+      "packPremium": "Premium Pack",
+      "perDay": "/day",
+      "includes": "Includes"
     },
     "step4": {
       "title": "Extras",
       "transport": "Transport",
       "bikeRental": "Bike rental",
       "shuttle": "Shuttle",
-      "other": "Other services"
+      "other": "Other services",
+      "addExtra": "Add extra",
+      "noExtrasSelected": "No extras selected",
+      "airportTransfer": "Airport transfer",
+      "bikeTransport": "Bike transport"
     },
     "step5": {
       "title": "Summary and payment",
       "tripSummary": "Trip summary",
       "total": "Total",
-      "confirmBooking": "Confirm booking"
+      "confirmBooking": "Confirm booking",
+      "paymentMethod": "Payment method",
+      "termsAccept": "I accept the terms and conditions",
+      "zone": "Zone",
+      "dates": "Dates",
+      "accommodation": "Accommodation",
+      "guide": "Guide",
+      "extras": "Extras",
+      "subtotal": "Subtotal",
+      "deposit": "Deposit (30%)",
+      "remainingPayment": "Remaining payment on arrival",
+      "payNow": "Pay now"
+    },
+    "success": {
+      "title": "Booking confirmed!",
+      "subtitle": "Your MTB adventure is underway",
+      "bookingRef": "Booking reference",
+      "emailSent": "We have sent a confirmation email to",
+      "nextSteps": "Next steps",
+      "step1": "You will receive an email with full details",
+      "step2": "Our team will contact you within 24h",
+      "step3": "We will send you the meeting point information",
+      "viewBooking": "View my booking",
+      "backHome": "Back to home"
+    }
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "subtitle": "Everything you need to know about our MTB trips.",
+    "categories": {
+      "general": "General",
+      "accommodation": "Accommodation",
+      "pricing": "Pricing and payments",
+      "logistics": "Logistics"
+    },
+    "questions": {
+      "guideService": {
+        "q": "What does the guide service include?",
+        "a": "The guide package includes daily briefing and route planning based on your level, accompanied rides, basic mechanical support, local recommendations and trip logistics coordination."
+      },
+      "level": {
+        "q": "What level do I need to participate?",
+        "a": "We have routes for intermediate and advanced levels. It's important to know how to handle your bike on technical trails. If you have doubts about your level, contact us and we'll advise you."
+      },
+      "duration": {
+        "q": "How many days does a typical trip last?",
+        "a": "The most common trips are 3-4 days of riding, but we can organize anything from weekend getaways to full weeks."
+      },
+      "verified": {
+        "q": "What does \"verified house\" mean?",
+        "a": "These are accommodations we have personally visited that meet specific requirements for MTB groups: ample parking, bike storage area, good location relative to trails, etc."
+      },
+      "ownAccommodation": {
+        "q": "Can I book my own accommodation?",
+        "a": "Of course! You can book on Airbnb or Booking and then hire just the guide and extras from us. We have a specific form for this."
+      },
+      "availability": {
+        "q": "How does availability work?",
+        "a": "Houses are shown as \"available upon confirmation\". After your request, we verify availability and confirm within 24h."
+      },
+      "managementFee": {
+        "q": "What is the management fee?",
+        "a": "It's a fee that covers trip planning, coordination with transport and service providers, change management, and support throughout your stay."
+      },
+      "payments": {
+        "q": "How do payments work?",
+        "a": "When booking, you pay MTB Experience for the guide service and management fee. If the accommodation is from our inventory, you also pay through us. Partner services (transfers, shuttles) can be paid directly to them or through us depending on the case."
+      },
+      "cancellation": {
+        "q": "What is the cancellation policy?",
+        "a": "Free cancellation up to 30 days before. Between 30-14 days, 50% retention. Less than 14 days, no refund. Check the full terms in our cancellation policy."
+      },
+      "bike": {
+        "q": "Do I need to bring my own bike?",
+        "a": "We recommend bringing your own bike, but we have rental partners for eMTB and DH bikes if you prefer not to transport it."
+      },
+      "transport": {
+        "q": "Do you offer airport transport?",
+        "a": "Yes, we work with transport partners who can pick you up from Málaga, Granada or Seville airports."
+      },
+      "shuttle": {
+        "q": "Is there a shuttle/uplift service?",
+        "a": "Yes, depending on the zone we can arrange shuttles to maximize descending. This is added as an extra in the configurator."
+      }
+    },
+    "stillQuestions": "Still have questions?",
+    "contactUs": "Contact us"
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Have questions? We're here to help.",
+    "talkToUs": "Talk to us",
+    "phone": "Phone",
+    "location": "Location",
+    "locationValue": "Southern Andalusia, Spain",
+    "preferWhatsApp": "Prefer WhatsApp?",
+    "whatsAppDesc": "We respond quickly. It's the most direct way to contact us.",
+    "sendMessage": "Send us a message",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "your@email.com",
+      "phone": "Phone",
+      "subject": "Subject",
+      "subjectPlaceholder": "What would you like to ask us about?",
+      "message": "Message",
+      "messagePlaceholder": "Tell us...",
+      "submit": "Send message"
+    },
+    "success": "Message sent! We'll get back to you soon."
+  },
+  "externalStays": {
+    "title": "Book accommodation wherever you want",
+    "subtitle": "You can book on Airbnb/Booking. Then come back here to arrange guide and extras.",
+    "alreadyBooked": "Already booked your accommodation?",
+    "alreadyBookedButton": "I've already booked accommodation",
+    "form": {
+      "title": "Your external booking details",
+      "link": "Listing or confirmation link",
+      "linkHelp": "Paste the link to your booking or listing",
+      "checkIn": "Check-in date",
+      "checkOut": "Check-out date",
+      "riders": "Number of riders",
+      "location": "Town / area",
+      "locationPlaceholder": "E.g.: Ronda, Cómpeta, Capileira...",
+      "arrivalTime": "Arrival time (optional)",
+      "arrivalTimePlaceholder": "E.g.: 15:00",
+      "notes": "Additional notes (optional)",
+      "notesPlaceholder": "Any additional information we should know..."
+    },
+    "success": {
+      "title": "Perfect!",
+      "message": "Now choose your guide package and the extras you need.",
+      "cta": "Continue with guide and extras"
+    },
+    "note": "The accommodation booking is made on the external platform. We take care of coordinating guide, transport and extras to make your trip perfect."
+  },
+  "legal": {
+    "lastUpdated": "Last updated: December 2024",
+    "terms": {
+      "title": "Terms and conditions",
+      "sections": {
+        "object": {
+          "title": "1. Service object",
+          "content": "MTB Experience offers organization and coordination services for Mountain Bike trips in southern Andalusia, including guide services, accommodation management and coordination of additional services with third-party collaborators."
+        },
+        "included": {
+          "title": "2. Services included",
+          "intro": "Services provided directly by MTB Experience include:",
+          "items": {
+            "guide": "MTB guide service",
+            "planning": "Trip planning and coordination",
+            "support": "Support during your stay",
+            "accommodation": "Accommodation booking management (when applicable)"
+          }
+        },
+        "thirdParty": {
+          "title": "3. Third-party services",
+          "intro": "Some services are provided by external collaborators (partners), including but not limited to:",
+          "items": {
+            "transport": "Transport and transfers",
+            "shuttle": "Shuttle/uplift services",
+            "rental": "Bike rental",
+            "accommodation": "Accommodation (in case of external bookings)"
+          },
+          "disclaimer": "MTB Experience acts as an intermediary in these cases and is not directly responsible for the provision of these services."
+        },
+        "requirements": {
+          "title": "4. Participant requirements",
+          "intro": "The participant must:",
+          "items": {
+            "level": "Have an MTB level appropriate to the activity booked",
+            "insurance": "Have accident and liability insurance",
+            "protection": "Use appropriate protective equipment",
+            "guide": "Follow the guide's instructions during activities"
+          }
+        },
+        "liability": {
+          "title": "5. Liability",
+          "content": "Mountain Biking involves inherent risks. The participant assumes these risks and exempts MTB Experience from liability for damages arising from the sporting practice, provided there is no negligence on the part of the guide."
+        },
+        "modifications": {
+          "title": "6. Modifications and cancellations",
+          "content": "Please consult our specific cancellation policy to learn about the conditions for modifying and cancelling bookings."
+        },
+        "contact": {
+          "title": "7. Contact",
+          "content": "For any queries about these terms, contact us at info@mtbexperience.com"
+        }
+      }
+    },
+    "privacy": {
+      "title": "Privacy policy",
+      "sections": {
+        "controller": {
+          "title": "1. Data controller",
+          "content": "MTB Experience is responsible for processing the personal data you provide."
+        },
+        "data": {
+          "title": "2. Data we collect",
+          "intro": "We collect the following personal data:",
+          "items": {
+            "name": "Name and surname",
+            "email": "Email address",
+            "phone": "Phone number",
+            "booking": "Booking data (dates, preferences, etc.)",
+            "payment": "Payment information (processed securely by payment gateways)"
+          }
+        },
+        "purpose": {
+          "title": "3. Purpose of processing",
+          "intro": "We use your data to:",
+          "items": {
+            "manage": "Manage your booking and provide the contracted services",
+            "communicate": "Communicate with you about your trip",
+            "coordinate": "Coordinate services with third-party collaborators",
+            "marketing": "Send you commercial information (only if you authorize it)"
+          }
+        },
+        "legal": {
+          "title": "4. Legal basis",
+          "content": "The processing of your data is based on the execution of the service contract and, for commercial communications, on your express consent."
+        },
+        "sharing": {
+          "title": "5. Sharing data with third parties",
+          "intro": "We may share your data with:",
+          "items": {
+            "accommodation": "Accommodation providers (to manage your booking)",
+            "partners": "Transport and service partners (to coordinate additional services)",
+            "payment": "Payment gateways (to process payments securely)"
+          }
+        },
+        "rights": {
+          "title": "6. Your rights",
+          "content": "You have the right to access, rectify, delete, limit and object to the processing of your data, as well as to data portability. To exercise these rights, contact us at info@mtbexperience.com"
+        },
+        "cookies": {
+          "title": "7. Cookies",
+          "content": "We use technical and analytical cookies. You can configure your browser to reject them, although some functionalities may be affected."
+        }
+      }
+    },
+    "cancellation": {
+      "title": "Cancellation policy",
+      "summary": {
+        "title": "Summary",
+        "over30": "+30 days before: Free cancellation, full refund",
+        "between": "30-14 days before: 50% retention",
+        "under14": "-14 days: No refund"
+      },
+      "sections": {
+        "client": {
+          "title": "1. Cancellations by the client",
+          "over30": {
+            "title": "More than 30 days before the start date",
+            "content": "100% refund of the amount paid, without penalty."
+          },
+          "between": {
+            "title": "Between 30 and 14 days before the start date",
+            "content": "50% retention of the total amount. The remaining 50% will be refunded."
+          },
+          "under14": {
+            "title": "Less than 14 days before the start date",
+            "content": "No refund will be made. The amount paid will be forfeited in full."
+          }
+        },
+        "modifications": {
+          "title": "2. Booking modifications",
+          "content1": "Date modifications are subject to availability and may incur additional costs if there is a seasonal price difference.",
+          "content2": "Minor changes (number of participants, extras) can be made up to 7 days before at no cost, subject to availability."
+        },
+        "byUs": {
+          "title": "3. Cancellations by MTB Experience",
+          "intro": "In the event that MTB Experience must cancel the trip for justified reasons (extreme weather conditions, force majeure, etc.), we will offer:",
+          "option1": "Date change at no additional cost, or",
+          "option2": "Full refund of the amount paid"
+        },
+        "thirdParty": {
+          "title": "4. Third-party services",
+          "content": "Services provided by third parties (external accommodation, transport, etc.) may have their own cancellation policies. Please consult the specific conditions of each provider."
+        },
+        "howTo": {
+          "title": "5. How to cancel",
+          "intro": "To cancel or modify your booking, contact us through:"
+        }
+      },
+      "questions": "Have questions about cancellations?"
     }
   },
   "footer": {
     "description": "Your MTB adventure in southern Spain, with expert local guides and full logistics.",
-    "zones": "Zones",
-    "services": "Services",
-    "company": "Company",
+    "legal": "Legal",
     "contact": "Contact",
-    "about": "About us",
-    "legal": "Legal notice",
-    "privacy": "Privacy",
-    "cookies": "Cookies",
-    "copyright": "© 2025 MTB Experience. All rights reserved."
+    "rights": "All rights reserved.",
+    "thirdParty": "Accommodation and transport services are provided by third-party collaborators."
+  },
+  "common": {
+    "continue": "Continue",
+    "back": "Back",
+    "save": "Save",
+    "cancel": "Cancel",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "viewAll": "View all",
+    "learnMore": "Learn more",
+    "bookNow": "Book now",
+    "contact": "Contact",
+    "search": "Search",
+    "send": "Send",
+    "select": "Select",
+    "from": "From",
+    "perNight": "/night",
+    "perPerson": "/person",
+    "perDay": "/day",
+    "guests": "guests",
+    "rooms": "rooms",
+    "included": "Included",
+    "optional": "Optional",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "free": "Free",
+    "required": "Required",
+    "step": "Step",
+    "close": "Close",
+    "add": "Add",
+    "remove": "Remove",
+    "selected": "Selected",
+    "nights": "nights",
+    "days": "days",
+    "note": "Note",
+    "contactUs": "Contact us"
   },
   "levels": {
     "intermediate": "Intermediate",
@@ -160,6 +542,11 @@
   },
   "types": {
     "enduro": "Enduro",
-    "dh": "DH"
+    "dh": "DH",
+    "both": "Both"
+  },
+  "accommodation": {
+    "searchExternal": "Prefer to find your own accommodation?",
+    "externalDescription": "Search on Airbnb, Booking or other platforms"
   }
 }

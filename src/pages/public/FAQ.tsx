@@ -1,79 +1,81 @@
 import { useState } from 'react'
 import { ChevronDown, ChevronUp } from 'lucide-react'
-
-const faqs = [
-  {
-    category: 'General',
-    questions: [
-      {
-        q: '¿Qué incluye el servicio de guía?',
-        a: 'El pack de guía incluye briefing diario y planificación de rutas según tu nivel, acompañamiento durante las salidas, soporte mecánico básico, recomendaciones locales y coordinación logística del viaje.',
-      },
-      {
-        q: '¿Qué nivel necesito para participar?',
-        a: 'Tenemos rutas para niveles intermedio y avanzado. Es importante saber manejar la bici en senderos técnicos. Si tienes dudas sobre tu nivel, contáctanos y te asesoramos.',
-      },
-      {
-        q: '¿Cuántos días dura un viaje típico?',
-        a: 'Los viajes más comunes son de 3-4 días de riding, pero podemos organizar desde escapadas de fin de semana hasta semanas completas.',
-      },
-    ],
-  },
-  {
-    category: 'Alojamiento',
-    questions: [
-      {
-        q: '¿Qué significa "casa verificada"?',
-        a: 'Son alojamientos que hemos visitado personalmente y que cumplen requisitos específicos para grupos MTB: parking amplio, zona para guardar bicis, buena ubicación respecto a los trails, etc.',
-      },
-      {
-        q: '¿Puedo reservar mi propio alojamiento?',
-        a: '¡Claro! Puedes reservar en Airbnb o Booking y después contratar con nosotros solo el guía y los extras. Tenemos un formulario específico para esto.',
-      },
-      {
-        q: '¿Cómo funciona la disponibilidad?',
-        a: 'Las casas se muestran como "disponibles bajo confirmación". Tras tu solicitud, verificamos disponibilidad y te confirmamos en menos de 24h.',
-      },
-    ],
-  },
-  {
-    category: 'Precios y pagos',
-    questions: [
-      {
-        q: '¿Qué es la tarifa de gestión?',
-        a: 'Es una tarifa que cubre la planificación del viaje, coordinación con proveedores de transporte y servicios, gestión de cambios, y soporte durante toda tu estancia.',
-      },
-      {
-        q: '¿Cómo funcionan los pagos?',
-        a: 'Al reservar pagas a MTB Experience el servicio de guía y la tarifa de gestión. Si el alojamiento es de nuestro inventario, también lo pagas a través de nosotros. Los servicios de partners (transfers, shuttles) se pueden pagar directamente a ellos o a través de nosotros según el caso.',
-      },
-      {
-        q: '¿Cuál es la política de cancelación?',
-        a: 'Cancelación gratuita hasta 30 días antes. Entre 30-14 días, retención del 50%. Menos de 14 días, no hay reembolso. Consulta los términos completos en nuestra política de cancelación.',
-      },
-    ],
-  },
-  {
-    category: 'Logística',
-    questions: [
-      {
-        q: '¿Necesito traer mi propia bici?',
-        a: 'Recomendamos traer tu propia bici, pero tenemos partners de alquiler de eMTB y bicis de DH si prefieres no transportarla.',
-      },
-      {
-        q: '¿Ofrecéis transporte desde el aeropuerto?',
-        a: 'Sí, trabajamos con partners de transporte que pueden recogerte en los aeropuertos de Málaga, Granada o Sevilla.',
-      },
-      {
-        q: '¿Hay servicio de shuttle/uplift?',
-        a: 'Sí, según la zona podemos organizar shuttles para maximizar el descenso. Esto se añade como extra en el configurador.',
-      },
-    ],
-  },
-]
+import { useTranslation } from '../../i18n'
 
 export default function FAQ() {
+  const { t } = useTranslation()
   const [openItems, setOpenItems] = useState<string[]>([])
+
+  const faqs = [
+    {
+      category: t('faq.categories.general'),
+      questions: [
+        {
+          q: t('faq.questions.guideService.q'),
+          a: t('faq.questions.guideService.a'),
+        },
+        {
+          q: t('faq.questions.level.q'),
+          a: t('faq.questions.level.a'),
+        },
+        {
+          q: t('faq.questions.duration.q'),
+          a: t('faq.questions.duration.a'),
+        },
+      ],
+    },
+    {
+      category: t('faq.categories.accommodation'),
+      questions: [
+        {
+          q: t('faq.questions.verified.q'),
+          a: t('faq.questions.verified.a'),
+        },
+        {
+          q: t('faq.questions.ownAccommodation.q'),
+          a: t('faq.questions.ownAccommodation.a'),
+        },
+        {
+          q: t('faq.questions.availability.q'),
+          a: t('faq.questions.availability.a'),
+        },
+      ],
+    },
+    {
+      category: t('faq.categories.pricing'),
+      questions: [
+        {
+          q: t('faq.questions.managementFee.q'),
+          a: t('faq.questions.managementFee.a'),
+        },
+        {
+          q: t('faq.questions.payments.q'),
+          a: t('faq.questions.payments.a'),
+        },
+        {
+          q: t('faq.questions.cancellation.q'),
+          a: t('faq.questions.cancellation.a'),
+        },
+      ],
+    },
+    {
+      category: t('faq.categories.logistics'),
+      questions: [
+        {
+          q: t('faq.questions.bike.q'),
+          a: t('faq.questions.bike.a'),
+        },
+        {
+          q: t('faq.questions.transport.q'),
+          a: t('faq.questions.transport.a'),
+        },
+        {
+          q: t('faq.questions.shuttle.q'),
+          a: t('faq.questions.shuttle.a'),
+        },
+      ],
+    },
+  ]
 
   const toggleItem = (id: string) => {
     setOpenItems((prev) =>
@@ -87,10 +89,10 @@ export default function FAQ() {
       <div className="bg-surface border-b border-border">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
           <h1 className="text-3xl font-bold text-text-primary mb-2">
-            Preguntas frecuentes
+            {t('faq.title')}
           </h1>
           <p className="text-text-secondary">
-            Todo lo que necesitas saber sobre nuestros viajes MTB.
+            {t('faq.subtitle')}
           </p>
         </div>
       </div>

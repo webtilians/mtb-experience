@@ -1,84 +1,88 @@
+import { useTranslation } from '../../../i18n'
+
 export default function Terms() {
+  const { t } = useTranslation()
+
   return (
     <div className="min-h-screen bg-background">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <h1 className="text-3xl font-bold text-text-primary mb-8">
-          Términos y condiciones
+          {t('legal.terms.title')}
         </h1>
 
         <div className="prose prose-gray max-w-none">
           <p className="text-text-secondary">
-            Última actualización: Diciembre 2024
+            {t('legal.lastUpdated')}
           </p>
 
           <h2 className="text-xl font-semibold text-text-primary mt-8 mb-4">
-            1. Objeto del servicio
+            {t('legal.terms.sections.object.title')}
           </h2>
           <p className="text-text-secondary mb-4">
-            MTB Experience ofrece servicios de organización y coordinación de viajes de Mountain Bike en el sur de Andalucía, incluyendo servicios de guía, gestión de alojamientos y coordinación de servicios adicionales con terceros colaboradores.
+            {t('legal.terms.sections.object.content')}
           </p>
 
           <h2 className="text-xl font-semibold text-text-primary mt-8 mb-4">
-            2. Servicios incluidos
+            {t('legal.terms.sections.included.title')}
           </h2>
           <p className="text-text-secondary mb-4">
-            Los servicios prestados directamente por MTB Experience incluyen:
+            {t('legal.terms.sections.included.intro')}
           </p>
           <ul className="list-disc list-inside text-text-secondary mb-4 space-y-2">
-            <li>Servicio de guía MTB</li>
-            <li>Planificación y coordinación del viaje</li>
-            <li>Soporte durante la estancia</li>
-            <li>Gestión de reservas de alojamiento (cuando aplique)</li>
+            <li>{t('legal.terms.sections.included.items.guide')}</li>
+            <li>{t('legal.terms.sections.included.items.planning')}</li>
+            <li>{t('legal.terms.sections.included.items.support')}</li>
+            <li>{t('legal.terms.sections.included.items.accommodation')}</li>
           </ul>
 
           <h2 className="text-xl font-semibold text-text-primary mt-8 mb-4">
-            3. Servicios de terceros
+            {t('legal.terms.sections.thirdParty.title')}
           </h2>
           <p className="text-text-secondary mb-4">
-            Algunos servicios son prestados por colaboradores externos (partners), incluyendo pero no limitado a:
+            {t('legal.terms.sections.thirdParty.intro')}
           </p>
           <ul className="list-disc list-inside text-text-secondary mb-4 space-y-2">
-            <li>Transporte y transfers</li>
-            <li>Servicios de shuttle/uplift</li>
-            <li>Alquiler de bicicletas</li>
-            <li>Alojamiento (en caso de reservas externas)</li>
+            <li>{t('legal.terms.sections.thirdParty.items.transport')}</li>
+            <li>{t('legal.terms.sections.thirdParty.items.shuttle')}</li>
+            <li>{t('legal.terms.sections.thirdParty.items.rental')}</li>
+            <li>{t('legal.terms.sections.thirdParty.items.accommodation')}</li>
           </ul>
           <p className="text-text-secondary mb-4">
-            MTB Experience actúa como intermediario en estos casos y no es responsable directo de la prestación de dichos servicios.
+            {t('legal.terms.sections.thirdParty.disclaimer')}
           </p>
 
           <h2 className="text-xl font-semibold text-text-primary mt-8 mb-4">
-            4. Requisitos del participante
+            {t('legal.terms.sections.requirements.title')}
           </h2>
           <p className="text-text-secondary mb-4">
-            El participante debe:
+            {t('legal.terms.sections.requirements.intro')}
           </p>
           <ul className="list-disc list-inside text-text-secondary mb-4 space-y-2">
-            <li>Tener un nivel de MTB acorde a la actividad contratada</li>
-            <li>Contar con seguro de accidentes y responsabilidad civil</li>
-            <li>Utilizar el equipo de protección adecuado</li>
-            <li>Seguir las indicaciones del guía durante las actividades</li>
+            <li>{t('legal.terms.sections.requirements.items.level')}</li>
+            <li>{t('legal.terms.sections.requirements.items.insurance')}</li>
+            <li>{t('legal.terms.sections.requirements.items.protection')}</li>
+            <li>{t('legal.terms.sections.requirements.items.guide')}</li>
           </ul>
 
           <h2 className="text-xl font-semibold text-text-primary mt-8 mb-4">
-            5. Responsabilidad
+            {t('legal.terms.sections.liability.title')}
           </h2>
           <p className="text-text-secondary mb-4">
-            La práctica del Mountain Bike conlleva riesgos inherentes. El participante asume estos riesgos y exime a MTB Experience de responsabilidad por daños derivados de la práctica deportiva, siempre que no medie negligencia por parte del guía.
+            {t('legal.terms.sections.liability.content')}
           </p>
 
           <h2 className="text-xl font-semibold text-text-primary mt-8 mb-4">
-            6. Modificaciones y cancelaciones
+            {t('legal.terms.sections.modifications.title')}
           </h2>
           <p className="text-text-secondary mb-4">
-            Consulta nuestra política de cancelación específica para conocer las condiciones de modificación y cancelación de reservas.
+            {t('legal.terms.sections.modifications.content')}
           </p>
 
           <h2 className="text-xl font-semibold text-text-primary mt-8 mb-4">
-            7. Contacto
+            {t('legal.terms.sections.contact.title')}
           </h2>
           <p className="text-text-secondary mb-4">
-            Para cualquier consulta sobre estos términos, contacta con nosotros en info@mtbexperience.com
+            {t('legal.terms.sections.contact.content')}
           </p>
         </div>
       </div>
