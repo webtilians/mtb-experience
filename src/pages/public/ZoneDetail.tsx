@@ -1,7 +1,91 @@
 import { useParams, Link } from 'react-router-dom'
-import { Calendar, TrendingUp, Mountain, ArrowRight, CheckCircle } from 'lucide-react'
+import { Calendar, TrendingUp, Mountain, ArrowRight, CheckCircle, MapPin } from 'lucide-react'
 import Button from '../../components/ui/Button'
 import CardStay from '../../components/cards/CardStay'
+import CardTrail from '../../components/cards/CardTrail'
+
+// Trail data for each zone
+const trailsData = {
+  ronda: [
+    {
+      name: 'El Tajo Descent',
+      difficulty: 'Rojo' as const,
+      distance: '8.2 km',
+      descent: '650m',
+      rating: 4.7,
+      description: 'Trail técnico con vistas al famoso puente de Ronda. Secciones de roca natural y switchbacks.',
+      trailforksUrl: 'https://www.trailforks.com/region/ronda/',
+      stravaUrl: 'https://www.strava.com/segments/explore#702,2/36.7,-5.17,36.75,-5.1',
+    },
+    {
+      name: 'Sierra de las Nieves',
+      difficulty: 'Negro' as const,
+      distance: '12.5 km',
+      descent: '1200m',
+      rating: 4.9,
+      description: 'Descenso épico desde el pico más alto. Trail alpino con terreno variado.',
+      trailforksUrl: 'https://www.trailforks.com/region/sierra-de-las-nieves/',
+    },
+    {
+      name: 'Encinas Flow',
+      difficulty: 'Azul' as const,
+      distance: '5.8 km',
+      descent: '420m',
+      rating: 4.5,
+      description: 'Trail fluido entre bosques de encinas. Perfecto para calentar.',
+      trailforksUrl: 'https://www.trailforks.com/region/ronda/',
+    },
+    {
+      name: 'Cueva del Gato',
+      difficulty: 'Rojo' as const,
+      distance: '6.3 km',
+      descent: '580m',
+      rating: 4.6,
+      description: 'Trail técnico que termina cerca de la famosa cueva. Rocas y roots.',
+      stravaUrl: 'https://www.strava.com/segments/explore#702,2/36.7,-5.2,36.8,-5.1',
+    },
+  ],
+  malaga: [
+    {
+      name: 'Montes de Málaga DH',
+      difficulty: 'Rojo' as const,
+      distance: '7.1 km',
+      descent: '720m',
+      rating: 4.6,
+      description: 'Descenso clásico desde los Montes de Málaga hasta la costa.',
+      trailforksUrl: 'https://www.trailforks.com/region/montes-de-malaga/',
+    },
+    {
+      name: 'El Torcal Express',
+      difficulty: 'Negro' as const,
+      distance: '9.4 km',
+      descent: '890m',
+      rating: 4.8,
+      description: 'Trail entre formaciones kársticas únicas. Terreno técnico.',
+      trailforksUrl: 'https://www.trailforks.com/region/el-torcal/',
+    },
+  ],
+  cadiz: [
+    {
+      name: 'Grazalema Flow',
+      difficulty: 'Azul' as const,
+      distance: '6.2 km',
+      descent: '480m',
+      rating: 4.4,
+      description: 'Trail fluido en la Sierra de Grazalema. Vistas espectaculares.',
+      trailforksUrl: 'https://www.trailforks.com/region/grazalema/',
+    },
+    {
+      name: 'Pinsapar Descent',
+      difficulty: 'Rojo' as const,
+      distance: '8.8 km',
+      descent: '750m',
+      rating: 4.7,
+      description: 'Descenso a través del bosque de pinsapos. Terreno natural.',
+      trailforksUrl: 'https://www.trailforks.com/region/grazalema/',
+    },
+  ],
+}
 
 // Mock data
 const zoneData = {
@@ -65,6 +149,7 @@ const nearbyStays = [
 export default function ZoneDetail() {
   const { zoneId } = useParams()
   const zone = zoneData[zoneId as keyof typeof zoneData] || zoneData.ronda
+  const trails = trailsData[zoneId as keyof typeof trailsData] || trailsData.ronda
 
   return (
     <div>
@@ -196,6 +281,61 @@ export default function ZoneDetail() {
                       </div>
                     </div>
                   ))}
+                </div>
+              </div>
+
+              {/* Trails Section */}
+              <div>
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-2xl font-bold text-text-primary">
+                    Trails de la zona
+                  </h2>
+                  <div className="flex items-center gap-2 text-sm text-text-secondary">
+                    <MapPin className="w-4 h-4" />
+                    <span>{trails.length} trails disponibles</span>
+                  </div>
+                </div>
+                
+                <p className="text-text-secondary mb-6">
+                  Estos son algunos de los trails que rodaremos durante tu viaje. 
+                  Los enlaces te llevan a Trailforks y Strava para que puedas ver los tracks, 
+                  fotos y reseñas de otros riders.
+                </p>
+
+                <div className="space-y-3">
+                  {trails.map((trail, index) => (
+                    <CardTrail key={index} {...trail} />
+                  ))}
+                </div>
+
+                <div className="mt-6 p-4 bg-orange-50 rounded-xl border border-orange-100">
+                  <div className="flex items-start gap-3">
+                    <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <img 
+                        src="https://www.trailforks.com/favicon.ico" 
+                        alt="Trailforks" 
+                        className="w-4 h-4"
+                      />
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-text-primary text-sm">
+                        Explora más en Trailforks
+                      </h4>
+                      <p className="text-sm text-text-secondary mt-1">
+                        Descubre todos los trails de la zona con mapas detallados, 
+                        condiciones actualizadas y fotos de la comunidad.
+                      </p>
+                      <a 
+                        href={`https://www.trailforks.com/region/andalusia/`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-sm font-medium text-orange-600 hover:text-orange-700 mt-2"
+                      >
+                        Ver región completa
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
