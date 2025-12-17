@@ -37,9 +37,9 @@ const zoneData: Record<string, {
     trailforksRegionId: '5303',
     trailforksUrl: 'https://www.trailforks.com/region/montes-de-malaga/',
     videos: [
-      { id: 'Kj5TL1l9QYQ', title: 'Enduro Montes de Málaga', trail: 'Sendero Picapedreros' },
-      { id: 'ZpVd7k1Uw6A', title: 'MTB Trails Málaga', trail: 'El Boticario' },
-      { id: 'q9CmQTUl_ac', title: 'Descenso técnico', trail: 'La Resinera' },
+      { id: 'WeR11P-DR7s', title: 'Kawasaki Trail', trail: 'Kawasaki' },
+      { id: 'pNvER8apdzs', title: 'Greg Trail', trail: 'Greg' },
+      { id: 'LvXBPyQyc8g', title: 'Likindoi y Adam', trail: 'Likindoi' },
     ],
     includes: [
       'Guía local experto en la zona',
