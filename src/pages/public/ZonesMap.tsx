@@ -157,32 +157,69 @@ export default function ZonesMap() {
         {viewMode === 'map' ? (
           <div className="flex flex-col lg:flex-row">
             {/* Map */}
-            <div className="lg:flex-1 h-[400px] lg:h-[calc(100vh-200px)] relative overflow-hidden">
-              {/* Map background image */}
-              <img 
-                src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1200"
-                alt="Mapa de Andalucía"
-                className="absolute inset-0 w-full h-full object-cover opacity-30"
-              />
-              <div className="absolute inset-0 bg-gradient-to-br from-forest-600/20 to-earth-600/20" />
+            <div className="lg:flex-1 h-[400px] lg:h-[calc(100vh-200px)] relative overflow-hidden bg-gradient-to-br from-blue-50 to-blue-100">
+              {/* Andalucía SVG Map */}
+              <svg 
+                viewBox="0 0 800 500" 
+                className="absolute inset-0 w-full h-full"
+                preserveAspectRatio="xMidYMid meet"
+              >
+                {/* Sea */}
+                <rect x="0" y="350" width="800" height="150" fill="#bae6fd" opacity="0.5"/>
+                <text x="100" y="420" fill="#0369a1" fontSize="14" opacity="0.6">Mar Mediterráneo</text>
+                <text x="50" y="480" fill="#0369a1" fontSize="14" opacity="0.6">Océano Atlántico</text>
+                <text x="650" y="480" fill="#0369a1" fontSize="12" opacity="0.5">África</text>
+                
+                {/* Andalucía silhouette - simplified */}
+                <path 
+                  d="M50,280 
+                     C80,250 120,220 180,200 
+                     C240,180 300,170 360,160 
+                     C420,150 480,145 540,150 
+                     C600,155 660,170 720,190 
+                     C750,200 770,220 780,250
+                     C785,280 780,310 760,340
+                     C740,360 700,375 650,385
+                     C600,395 550,400 500,395
+                     C450,390 400,380 350,375
+                     C300,370 250,365 200,355
+                     C150,345 100,330 70,310
+                     C50,295 45,285 50,280Z"
+                  fill="#f0fdf4"
+                  stroke="#16a34a"
+                  strokeWidth="2"
+                  opacity="0.8"
+                />
+                
+                {/* Province labels */}
+                <text x="120" y="320" fill="#166534" fontSize="11" fontWeight="500" opacity="0.7">Cádiz</text>
+                <text x="220" y="290" fill="#166534" fontSize="11" fontWeight="500" opacity="0.7">Sevilla</text>
+                <text x="350" y="270" fill="#166534" fontSize="11" fontWeight="500" opacity="0.7">Córdoba</text>
+                <text x="480" y="300" fill="#166534" fontSize="11" fontWeight="500" opacity="0.7">Málaga</text>
+                <text x="620" y="260" fill="#166534" fontSize="11" fontWeight="500" opacity="0.7">Granada</text>
+                <text x="700" y="300" fill="#166534" fontSize="11" fontWeight="500" opacity="0.7">Almería</text>
+                
+                {/* Mountain ranges */}
+                <text x="400" y="220" fill="#854d0e" fontSize="10" opacity="0.5" fontStyle="italic">Sierra Nevada</text>
+                <text x="250" y="250" fill="#854d0e" fontSize="9" opacity="0.4" fontStyle="italic">Serranía de Ronda</text>
+              </svg>
               
               {/* Grid overlay for better visibility */}
               <div className="absolute inset-0" style={{
-                backgroundImage: 'linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px)',
-                backgroundSize: '40px 40px'
+                backgroundImage: 'linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px)',
+                backgroundSize: '50px 50px'
               }} />
 
               {/* Zone pins with real approximate positions */}
               {filteredZones.map((zone) => {
-                // Convert coordinates to approximate map positions
-                // Andalucía roughly: lat 36-38, lng -7 to -2
+                // Positions mapped to SVG coordinates converted to percentages
                 const positionMap: Record<string, { left: string; top: string }> = {
-                  'montes-de-malaga': { left: '55%', top: '65%' },
-                  'velez-malaga': { left: '65%', top: '68%' },
-                  'archidona': { left: '58%', top: '50%' },
-                  'marbella': { left: '42%', top: '75%' },
-                  'tarifa': { left: '20%', top: '85%' },
-                  'granada': { left: '75%', top: '45%' },
+                  'montes-de-malaga': { left: '58%', top: '62%' },
+                  'velez-malaga': { left: '66%', top: '65%' },
+                  'archidona': { left: '54%', top: '52%' },
+                  'marbella': { left: '45%', top: '70%' },
+                  'tarifa': { left: '18%', top: '78%' },
+                  'granada': { left: '72%', top: '48%' },
                 }
                 const pos = positionMap[zone.id] || { left: '50%', top: '50%' }
                 
