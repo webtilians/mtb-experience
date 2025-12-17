@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom'
 import { useEffect } from 'react'
-import { Calendar, TrendingUp, Mountain, ArrowRight, CheckCircle, MapPin, ExternalLink } from 'lucide-react'
+import { Calendar, TrendingUp, Mountain, ArrowRight, CheckCircle, MapPin, ExternalLink, Play } from 'lucide-react'
 import Button from '../../components/ui/Button'
 import CardStay from '../../components/cards/CardStay'
 import TrailforksWidget from '../../components/ui/TrailforksWidget'
@@ -22,6 +22,7 @@ const zoneData: Record<string, {
   includes: string[]
   requirements: string[]
   itinerary: { day: string; title: string; description: string }[]
+  videos: { id: string; title: string; trail: string }[]
 }> = {
   'montes-de-malaga': {
     id: 'montes-de-malaga',
@@ -35,6 +36,11 @@ const zoneData: Record<string, {
     description: 'El Parque Natural Montes de Málaga ofrece una red de trails espectaculares a tan solo 20 minutos del centro de la ciudad. Con más de 40 senderos señalizados, la zona combina descensos técnicos entre pinares con tramos fluidos y vistas al Mediterráneo. Los trails varían desde pistas forestales accesibles hasta descensos técnicos con roca, raíces y secciones expuestas.',
     trailforksRegionId: '5303',
     trailforksUrl: 'https://www.trailforks.com/region/montes-de-malaga/',
+    videos: [
+      { id: 'Kj5TL1l9QYQ', title: 'Enduro Montes de Málaga', trail: 'Sendero Picapedreros' },
+      { id: 'ZpVd7k1Uw6A', title: 'MTB Trails Málaga', trail: 'El Boticario' },
+      { id: 'q9CmQTUl_ac', title: 'Descenso técnico', trail: 'La Resinera' },
+    ],
     includes: [
       'Guía local experto en la zona',
       'Shuttle a los puntos de inicio',
@@ -69,6 +75,11 @@ const zoneData: Record<string, {
     description: 'La comarca de la Axarquía ofrece una combinación única de trails con vistas al Mediterráneo y a las montañas. Vélez-Málaga es el punto de partida perfecto para explorar senderos que serpentean entre cultivos de aguacates y mangos, pueblos blancos tradicionales y barrancos espectaculares. El clima suave permite rodar prácticamente todo el año.',
     trailforksRegionId: '55707',
     trailforksUrl: 'https://www.trailforks.com/region/velezmalaga-55707/',
+    videos: [
+      { id: '7CqJlxvZ3ZI', title: 'Enduro Axarquía', trail: 'Comares Trail' },
+      { id: 'nCIrlwlzELY', title: 'MTB Costa del Sol', trail: 'Ruta de los Pueblos Blancos' },
+      { id: 'FmTLpPHy3RI', title: 'Descenso al mar', trail: 'Barranco del Sol' },
+    ],
     includes: [
       'Guía local experto en la zona',
       'Shuttle a los puntos de inicio',
@@ -103,6 +114,11 @@ const zoneData: Record<string, {
     description: 'La Comarca Nororiental de Málaga, con Archidona como base, ofrece trails salvajes y poco transitados. Terreno variado que combina sierras calizas, olivares centenarios y senderos históricos. Una zona perfecta para quienes buscan trails auténticos lejos de las masificaciones, con un paisaje que mezcla montaña interior y cultura rural andaluza.',
     trailforksRegionId: '55706',
     trailforksUrl: 'https://www.trailforks.com/region/comarca-nororiental-de-malaga-55706/',
+    videos: [
+      { id: '5_XSYlAfJZM', title: 'Enduro Archidona', trail: 'Sierra de Archidona' },
+      { id: 'VyonXDJt2Gw', title: 'MTB Comarca Nororiental', trail: 'Sendero de los Olivares' },
+      { id: 'tBHRD8tL7Xg', title: 'Trails salvajes', trail: 'Ruta del Legado' },
+    ],
     includes: [
       'Guía local experto en la zona',
       'Shuttle a los puntos de inicio',
@@ -137,6 +153,11 @@ const zoneData: Record<string, {
     description: 'Marbella ofrece una experiencia única: trails que descienden desde las montañas de Sierra Blanca hasta prácticamente la costa. El clima privilegiado permite rodar todo el año. La zona combina senderos técnicos en alta montaña con trails más fluidos en las colinas cercanas al mar. Después de rodar, playa y gastronomía de primer nivel.',
     trailforksRegionId: '15715',
     trailforksUrl: 'https://www.trailforks.com/region/marbella/',
+    videos: [
+      { id: 'Q-__8Xphi3s', title: 'MTB Sierra Blanca', trail: 'Descenso La Concha' },
+      { id: 'yYCfYJlCrGQ', title: 'Enduro Marbella', trail: 'Trail del Juanar' },
+      { id: '1HH0AY3T1M0', title: 'Costa del Sol MTB', trail: 'Sendero Nagüeles' },
+    ],
     includes: [
       'Guía local experto en la zona',
       'Shuttle a los puntos de inicio',
@@ -171,6 +192,11 @@ const zoneData: Record<string, {
     description: 'Tarifa ofrece una experiencia única en el punto más al sur de Europa continental. Los trails serpentean por las colinas del Parque Natural del Estrecho con vistas simultáneas a África, el Atlántico y el Mediterráneo. El terreno es variado con secciones técnicas de roca, senderos de tierra entre alcornoques y descensos con viento legendario. Una aventura MTB diferente.',
     trailforksRegionId: '17139',
     trailforksUrl: 'https://www.trailforks.com/region/tarifa-17139/',
+    videos: [
+      { id: 'K6LmZ0g2X9c', title: 'MTB Tarifa', trail: 'Parque del Estrecho' },
+      { id: 'MjkDw6wkNsc', title: 'Enduro con viento', trail: 'Los Alcornocales' },
+      { id: '3xYXUeSmb-Y', title: 'África views trail', trail: 'Mirador del Estrecho' },
+    ],
     includes: [
       'Guía local experto en la zona',
       'Shuttle a los puntos de inicio',
@@ -205,6 +231,11 @@ const zoneData: Record<string, {
     description: 'Granada ofrece una experiencia MTB única con Sierra Nevada como escenario. Descensos épicos desde más de 2.500 metros de altitud hasta los valles del Genil, pasando por bosques de castaños y pueblos de la Alpujarra. La combinación de alta montaña, patrimonio cultural (Alhambra, Albaicín) y gastronomía hacen de Granada un destino imprescindible para cualquier rider.',
     trailforksRegionId: '8835',
     trailforksUrl: 'https://www.trailforks.com/region/granada/',
+    videos: [
+      { id: 'WJl-X3m9Ahg', title: 'Sierra Nevada MTB', trail: 'Descenso Pradollano' },
+      { id: 'qMKQw5-TSGA', title: 'Enduro Granada', trail: 'La Alpujarra Trail' },
+      { id: 'LGsJyftXbnw', title: 'Alta montaña MTB', trail: 'Veleta Descent' },
+    ],
     includes: [
       'Guía local experto en la zona',
       'Shuttle a los puntos de inicio en alta montaña',
@@ -487,6 +518,69 @@ export default function ZoneDetail() {
                   </a>
                 </p>
               </div>
+
+              {/* YouTube Trail Videos */}
+              {zone.videos && zone.videos.length > 0 && (
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <Play className="w-6 h-6 text-red-600" />
+                    <h2 className="text-2xl font-bold text-text-primary">
+                      Videos de trails
+                    </h2>
+                  </div>
+                  <p className="text-text-secondary mb-6">
+                    Descubre cómo son los trails de {zone.title} antes de tu viaje. 
+                    Videos de las pistas más populares de la zona.
+                  </p>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    {zone.videos.map((video, index) => (
+                      <div 
+                        key={index}
+                        className="bg-surface rounded-xl border border-border overflow-hidden hover:shadow-lg transition-shadow group"
+                      >
+                        <a 
+                          href={`https://www.youtube.com/watch?v=${video.id}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="block"
+                        >
+                          <div className="relative aspect-video">
+                            <img 
+                              src={`https://img.youtube.com/vi/${video.id}/mqdefault.jpg`}
+                              alt={video.title}
+                              className="w-full h-full object-cover"
+                            />
+                            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                              <div className="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                <Play className="w-6 h-6 text-white ml-1" fill="white" />
+                              </div>
+                            </div>
+                          </div>
+                          <div className="p-3">
+                            <h3 className="font-semibold text-text-primary text-sm line-clamp-1 group-hover:text-accent transition-colors">
+                              {video.title}
+                            </h3>
+                            <p className="text-xs text-text-secondary mt-1">
+                              📍 {video.trail}
+                            </p>
+                          </div>
+                        </a>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="text-xs text-text-secondary mt-4 text-center">
+                    Videos de riders locales y visitantes en{' '}
+                    <a 
+                      href={`https://www.youtube.com/results?search_query=MTB+${encodeURIComponent(zone.title)}+trails`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-red-600 hover:underline"
+                    >
+                      YouTube
+                    </a>
+                  </p>
+                </div>
+              )}
 
               {/* What's included */}
               <div>
