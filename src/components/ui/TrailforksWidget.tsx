@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 interface TrailforksWidgetProps {
   regionId: string
@@ -12,32 +12,39 @@ export default function TrailforksWidget({
   className = '' 
 }: TrailforksWidgetProps) {
   const containerRef = useRef<HTMLDivElement>(null)
-  const scriptLoaded = useRef(false)
+  const [scriptReady, setScriptReady] = useState(false)
 
   useEffect(() => {
-    // Load Trailforks widget script only once
-    if (!scriptLoaded.current) {
-      const existingScript = document.querySelector('script[src*="trailforks/widget.js"]')
-      
-      if (!existingScript) {
-        const script = document.createElement('script')
-        script.src = 'https://es.pinkbike.org/ttl-86400/sprt/j/trailforks/widget.js'
-        script.async = true
-        document.head.appendChild(script)
-      }
-      
-      scriptLoaded.current = true
-    }
-
-    // Re-initialize widgets when regionId changes
-    const timer = setTimeout(() => {
+    // Check if script is already loaded
+    const existingScript = document.querySelector('script[src*="trailforks/widget.js"]')
+    
+    if (existingScript) {
+      // Script already exists, check if TFWidgets is available
       if ((window as any).TFWidgets) {
-        (window as any).TFWidgets.init()
+        setScriptReady(true)
+      } else {
+        existingScript.addEventListener('load', () => setScriptReady(true))
       }
-    }, 500)
+    } else {
+      // Load the script
+      const script = document.createElement('script')
+      script.src = 'https://es.pinkbike.org/ttl-86400/sprt/j/trailforks/widget.js'
+      script.async = true
+      script.onload = () => setScriptReady(true)
+      document.head.appendChild(script)
+    }
+  }, [])
 
-    return () => clearTimeout(timer)
-  }, [regionId])
+  useEffect(() => {
+    // Re-initialize widgets when script is ready or regionId changes
+    if (scriptReady && (window as any).TFWidgets) {
+      // Small delay to ensure DOM is ready
+      const timer = setTimeout(() => {
+        (window as any).TFWidgets.init()
+      }, 100)
+      return () => clearTimeout(timer)
+    }
+  }, [scriptReady, regionId])
 
   return (
     <div className={`rounded-xl overflow-hidden border border-border ${className}`}>
