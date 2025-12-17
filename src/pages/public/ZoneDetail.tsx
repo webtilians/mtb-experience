@@ -4,6 +4,7 @@ import { Calendar, TrendingUp, Mountain, ArrowRight, CheckCircle, MapPin, Extern
 import Button from '../../components/ui/Button'
 import CardStay from '../../components/cards/CardStay'
 import TrailforksWidget from '../../components/ui/TrailforksWidget'
+import AccommodationButtons from '../../components/ui/AccommodationButtons'
 
 // Zone data with Trailforks region IDs
 const zoneData: Record<string, {
@@ -608,6 +609,9 @@ export default function ZoneDetail() {
                     </Link>
                   </div>
                 )}
+
+                {/* External Accommodation Search */}
+                <AccommodationButtons locationName={zone.title} />
               </div>
             </div>
           </div>
