@@ -3,47 +3,17 @@ import { MapPin, List, Filter } from 'lucide-react'
 import CardZone from '../../components/cards/CardZone'
 import Button from '../../components/ui/Button'
 
-// Mock data
+// Zones data - real zones only
 const zones = [
   {
-    id: 'ronda',
-    title: 'Ronda / Serranía',
-    image: 'https://images.unsplash.com/photo-1544191696-102dbdaeeaa0?w=800',
-    tags: ['Técnico', 'Flow', 'Vistas'],
-    level: 'Avanzado' as const,
-    type: 'Enduro' as const,
-    description: 'Trails técnicos con vistas espectaculares al Tajo de Ronda. Ideal para riders con experiencia.',
-    coords: { lat: 36.7461, lng: -5.1611 },
-  },
-  {
-    id: 'axarquia',
-    title: 'Axarquía',
-    image: 'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800',
-    tags: ['Flow', 'Vistas', 'Mar'],
-    level: 'Intermedio' as const,
-    type: 'Enduro' as const,
-    description: 'Senderos fluidos entre pueblos blancos con vistas al Mediterráneo.',
-    coords: { lat: 36.7833, lng: -4.1500 },
-  },
-  {
-    id: 'sierra-nevada',
-    title: 'Sierra Nevada / Granada',
+    id: 'montes-de-malaga',
+    title: 'Montes de Málaga',
     image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800',
-    tags: ['Alta montaña', 'Épico'],
-    level: 'Avanzado' as const,
-    type: 'DH' as const,
-    description: 'Descensos épicos desde más de 3.000 metros. La experiencia definitiva.',
-    coords: { lat: 37.0886, lng: -3.3962 },
-  },
-  {
-    id: 'alpujarra',
-    title: 'La Alpujarra',
-    image: 'https://images.unsplash.com/photo-1571188654248-7a89213915f7?w=800',
-    tags: ['Remoto', 'Auténtico'],
+    tags: ['Técnico', 'Flow', 'Vistas'],
     level: 'Intermedio' as const,
     type: 'Enduro' as const,
-    description: 'Trails remotos en pueblos tradicionales de montaña.',
-    coords: { lat: 36.9564, lng: -3.3572 },
+    description: 'Trails técnicos a 20 minutos de la ciudad con vistas al Mediterráneo. +40 senderos señalizados.',
+    coords: { lat: 36.7861, lng: -4.3931 },
   },
 ]
 

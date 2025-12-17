@@ -3,34 +3,16 @@ import { MapPin, Calendar, Users, ArrowRight, Shield, Map, CheckCircle } from 'l
 import Button from '../../components/ui/Button'
 import CardZone from '../../components/cards/CardZone'
 
-// Mock data - replace with real data
+// Featured zones - real data
 const featuredZones = [
   {
-    id: 'ronda',
-    title: 'Ronda / Serranía',
-    image: 'https://images.unsplash.com/photo-1544191696-102dbdaeeaa0?w=800',
-    tags: ['Técnico', 'Flow'],
-    level: 'Avanzado' as const,
-    type: 'Enduro' as const,
-    description: 'Trails técnicos con vistas espectaculares al Tajo de Ronda.',
-  },
-  {
-    id: 'axarquia',
-    title: 'Axarquía',
-    image: 'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800',
-    tags: ['Flow', 'Vistas'],
+    id: 'montes-de-malaga',
+    title: 'Montes de Málaga',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800',
+    tags: ['Técnico', 'Flow', 'Vistas'],
     level: 'Intermedio' as const,
     type: 'Enduro' as const,
-    description: 'Senderos fluidos entre pueblos blancos y el Mediterráneo.',
-  },
-  {
-    id: 'sierra-nevada',
-    title: 'Sierra Nevada / Granada',
-    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800',
-    tags: ['Alta montaña', 'DH'],
-    level: 'Avanzado' as const,
-    type: 'DH' as const,
-    description: 'Descensos épicos desde más de 3.000 metros de altitud.',
+    description: 'Trails técnicos a 20 minutos de la ciudad con vistas al Mediterráneo.',
   },
 ]
 

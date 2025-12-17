@@ -1,155 +1,108 @@
 import { useParams, Link } from 'react-router-dom'
-import { Calendar, TrendingUp, Mountain, ArrowRight, CheckCircle, MapPin } from 'lucide-react'
+import { useEffect } from 'react'
+import { Calendar, TrendingUp, Mountain, ArrowRight, CheckCircle, MapPin, ExternalLink } from 'lucide-react'
 import Button from '../../components/ui/Button'
 import CardStay from '../../components/cards/CardStay'
-import CardTrail from '../../components/cards/CardTrail'
+import TrailforksWidget from '../../components/ui/TrailforksWidget'
 
-// Trail data for each zone
-const trailsData = {
-  ronda: [
-    {
-      name: 'El Tajo Descent',
-      difficulty: 'Rojo' as const,
-      distance: '8.2 km',
-      descent: '650m',
-      rating: 4.7,
-      description: 'Trail técnico con vistas al famoso puente de Ronda. Secciones de roca natural y switchbacks.',
-      trailforksUrl: 'https://www.trailforks.com/region/ronda/',
-      stravaUrl: 'https://www.strava.com/segments/explore#702,2/36.7,-5.17,36.75,-5.1',
-    },
-    {
-      name: 'Sierra de las Nieves',
-      difficulty: 'Negro' as const,
-      distance: '12.5 km',
-      descent: '1200m',
-      rating: 4.9,
-      description: 'Descenso épico desde el pico más alto. Trail alpino con terreno variado.',
-      trailforksUrl: 'https://www.trailforks.com/region/sierra-de-las-nieves/',
-    },
-    {
-      name: 'Encinas Flow',
-      difficulty: 'Azul' as const,
-      distance: '5.8 km',
-      descent: '420m',
-      rating: 4.5,
-      description: 'Trail fluido entre bosques de encinas. Perfecto para calentar.',
-      trailforksUrl: 'https://www.trailforks.com/region/ronda/',
-    },
-    {
-      name: 'Cueva del Gato',
-      difficulty: 'Rojo' as const,
-      distance: '6.3 km',
-      descent: '580m',
-      rating: 4.6,
-      description: 'Trail técnico que termina cerca de la famosa cueva. Rocas y roots.',
-      stravaUrl: 'https://www.strava.com/segments/explore#702,2/36.7,-5.2,36.8,-5.1',
-    },
-  ],
-  malaga: [
-    {
-      name: 'Montes de Málaga DH',
-      difficulty: 'Rojo' as const,
-      distance: '7.1 km',
-      descent: '720m',
-      rating: 4.6,
-      description: 'Descenso clásico desde los Montes de Málaga hasta la costa.',
-      trailforksUrl: 'https://www.trailforks.com/region/montes-de-malaga/',
-    },
-    {
-      name: 'El Torcal Express',
-      difficulty: 'Negro' as const,
-      distance: '9.4 km',
-      descent: '890m',
-      rating: 4.8,
-      description: 'Trail entre formaciones kársticas únicas. Terreno técnico.',
-      trailforksUrl: 'https://www.trailforks.com/region/el-torcal/',
-    },
-  ],
-  cadiz: [
-    {
-      name: 'Grazalema Flow',
-      difficulty: 'Azul' as const,
-      distance: '6.2 km',
-      descent: '480m',
-      rating: 4.4,
-      description: 'Trail fluido en la Sierra de Grazalema. Vistas espectaculares.',
-      trailforksUrl: 'https://www.trailforks.com/region/grazalema/',
-    },
-    {
-      name: 'Pinsapar Descent',
-      difficulty: 'Rojo' as const,
-      distance: '8.8 km',
-      descent: '750m',
-      rating: 4.7,
-      description: 'Descenso a través del bosque de pinsapos. Terreno natural.',
-      trailforksUrl: 'https://www.trailforks.com/region/grazalema/',
-    },
-  ],
-}
-
-// Mock data
-const zoneData = {
-  ronda: {
-    id: 'ronda',
-    title: 'Ronda / Serranía',
-    subtitle: 'Trails técnicos con vistas espectaculares',
-    heroImage: 'https://images.unsplash.com/photo-1544191696-102dbdaeeaa0?w=1920',
-    images: [
-      'https://images.unsplash.com/photo-1544191696-102dbdaeeaa0?w=800',
-      'https://images.unsplash.com/photo-1517649763962-0c623066013b?w=800',
-    ],
-    level: 'Avanzado',
+// Zone data with Trailforks region IDs
+const zoneData: Record<string, {
+  id: string
+  title: string
+  subtitle: string
+  heroImage: string
+  level: string
+  type: string
+  bestSeason: string
+  runsPerDay: string
+  description: string
+  trailforksRegionId: string
+  trailforksUrl: string
+  includes: string[]
+  requirements: string[]
+  itinerary: { day: string; title: string; description: string }[]
+}> = {
+  'montes-de-malaga': {
+    id: 'montes-de-malaga',
+    title: 'Montes de Málaga',
+    subtitle: 'Trails técnicos a 20 minutos de la ciudad',
+    heroImage: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920',
+    level: 'Intermedio-Avanzado',
     type: 'Enduro',
     bestSeason: 'Octubre - Mayo',
     runsPerDay: '4-6',
-    description: 'La Serranía de Ronda ofrece algunos de los trails más técnicos y espectaculares de Andalucía. Con el impresionante Tajo como telón de fondo, los senderos combinan secciones técnicas de roca con tramos fluidos entre bosques de encinas.',
+    description: 'El Parque Natural Montes de Málaga ofrece una red de trails espectaculares a tan solo 20 minutos del centro de la ciudad. Con más de 40 senderos señalizados, la zona combina descensos técnicos entre pinares con tramos fluidos y vistas al Mediterráneo. Los trails varían desde pistas forestales accesibles hasta descensos técnicos con roca, raíces y secciones expuestas.',
+    trailforksRegionId: '5303',
+    trailforksUrl: 'https://www.trailforks.com/region/montes-de-malaga/',
     includes: [
       'Guía local experto en la zona',
+      'Shuttle a los puntos de inicio',
       'Planificación de rutas según nivel',
-      'Transporte a puntos de inicio',
       'Soporte mecánico básico',
-      'Recomendaciones de restaurantes locales',
+      'Recomendaciones gastronómicas locales',
+      'Seguro de actividad',
     ],
     requirements: [
-      'Nivel intermedio-avanzado',
-      'Bici de enduro (150-170mm)',
-      'Casco integral recomendado',
+      'Nivel intermedio mínimo',
+      'Bici de trail o enduro (140-170mm)',
+      'Casco obligatorio (integral recomendado)',
       'Protecciones rodilleras',
+      'Hidratación y snacks',
     ],
     itinerary: [
-      { day: 'Día 1', title: 'Llegada y trail de bienvenida', description: 'Recogida, briefing y trail suave de calentamiento.' },
-      { day: 'Día 2', title: 'Los Caminos del Rey', description: 'Trail técnico con vistas al Tajo. 1200m de descenso.' },
-      { day: 'Día 3', title: 'Sierra de las Nieves', description: 'Trails en alta montaña. 1800m de descenso acumulado.' },
-      { day: 'Día 4', title: 'Despedida', description: 'Trail de cierre y traslado al aeropuerto.' },
+      { day: 'Día 1', title: 'Llegada y reconocimiento', description: 'Recogida, check-in en alojamiento y trail suave de calentamiento para conocer el terreno.' },
+      { day: 'Día 2', title: 'Los clásicos del parque', description: 'Rutas más emblemáticas de la zona. 1500m de descenso acumulado.' },
+      { day: 'Día 3', title: 'Trails técnicos', description: 'Descensos más técnicos para los que buscan adrenalina. 1800m de descenso.' },
+      { day: 'Día 4', title: 'Sesión final y despedida', description: 'Trail de cierre adaptado al nivel y traslado si es necesario.' },
     ],
   },
 }
 
-const nearbyStays = [
-  {
-    id: 'casa-ronda-1',
-    title: 'Casa Rural El Molino',
-    images: ['https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800'],
-    municipality: 'Ronda',
-    capacity: 6,
-    priceRange: '120-150€',
-    amenities: ['Parking', 'Piscina', 'Jardín'],
-  },
-  {
-    id: 'casa-ronda-2',
-    title: 'Cortijo Los Olivos',
-    images: ['https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800'],
-    municipality: 'Arriate',
-    capacity: 8,
-    priceRange: '150-180€',
-    amenities: ['Parking', 'BBQ', 'Vistas'],
-  },
-]
+// Nearby stays for each zone
+const staysByZone: Record<string, Array<{
+  id: string
+  title: string
+  images: string[]
+  municipality: string
+  capacity: number
+  priceRange: string
+  amenities: string[]
+}>> = {
+  'montes-de-malaga': [
+    {
+      id: 'casa-malaga-1',
+      title: 'Casa Rural Los Pinos',
+      images: ['https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800'],
+      municipality: 'Colmenar',
+      capacity: 6,
+      priceRange: '110-140€',
+      amenities: ['Parking', 'Jardín', 'BBQ'],
+    },
+    {
+      id: 'casa-malaga-2',
+      title: 'Cortijo El Mirador',
+      images: ['https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800'],
+      municipality: 'Montes de Málaga',
+      capacity: 8,
+      priceRange: '140-170€',
+      amenities: ['Parking', 'Piscina', 'Vistas al mar'],
+    },
+  ],
+}
+
+// Default zone if not found
+const defaultZoneId = 'montes-de-malaga'
 
 export default function ZoneDetail() {
   const { zoneId } = useParams()
-  const zone = zoneData[zoneId as keyof typeof zoneData] || zoneData.ronda
-  const trails = trailsData[zoneId as keyof typeof trailsData] || trailsData.ronda
+  const currentZoneId = zoneId && zoneData[zoneId] ? zoneId : defaultZoneId
+  const zone = zoneData[currentZoneId]
+  const nearbyStays = staysByZone[currentZoneId] || []
+
+  // Scroll to top on zone change
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [currentZoneId])
 
   return (
     <div>
@@ -227,6 +180,43 @@ export default function ZoneDetail() {
                 </p>
               </div>
 
+              {/* Trailforks Map Widget */}
+              <div>
+                <div className="flex items-center justify-between mb-4">
+                  <h2 className="text-2xl font-bold text-text-primary">
+                    Mapa de trails
+                  </h2>
+                  <a 
+                    href={zone.trailforksUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-sm font-medium text-orange-600 hover:text-orange-700"
+                  >
+                    Ver en Trailforks
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                </div>
+                <p className="text-text-secondary mb-4">
+                  Explora todos los trails de la zona en el mapa interactivo. 
+                  Haz clic en cualquier trail para ver detalles, fotos y reseñas.
+                </p>
+                <TrailforksWidget 
+                  regionId={zone.trailforksRegionId} 
+                  height="500px"
+                />
+                <p className="text-xs text-text-secondary mt-2 text-center">
+                  Mapa proporcionado por{' '}
+                  <a 
+                    href="https://www.trailforks.com/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-orange-600 hover:underline"
+                  >
+                    Trailforks.com
+                  </a>
+                </p>
+              </div>
+
               {/* What's included */}
               <div>
                 <h2 className="text-2xl font-bold text-text-primary mb-4">
@@ -269,7 +259,7 @@ export default function ZoneDetail() {
                       className="flex gap-4 p-4 bg-gray-50 rounded-xl"
                     >
                       <div className="w-16 h-16 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <span className="text-accent font-bold">{day.day}</span>
+                        <span className="text-accent font-bold text-sm">{day.day}</span>
                       </div>
                       <div>
                         <h4 className="font-semibold text-text-primary">
@@ -281,61 +271,6 @@ export default function ZoneDetail() {
                       </div>
                     </div>
                   ))}
-                </div>
-              </div>
-
-              {/* Trails Section */}
-              <div>
-                <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-2xl font-bold text-text-primary">
-                    Trails de la zona
-                  </h2>
-                  <div className="flex items-center gap-2 text-sm text-text-secondary">
-                    <MapPin className="w-4 h-4" />
-                    <span>{trails.length} trails disponibles</span>
-                  </div>
-                </div>
-                
-                <p className="text-text-secondary mb-6">
-                  Estos son algunos de los trails que rodaremos durante tu viaje. 
-                  Los enlaces te llevan a Trailforks y Strava para que puedas ver los tracks, 
-                  fotos y reseñas de otros riders.
-                </p>
-
-                <div className="space-y-3">
-                  {trails.map((trail, index) => (
-                    <CardTrail key={index} {...trail} />
-                  ))}
-                </div>
-
-                <div className="mt-6 p-4 bg-orange-50 rounded-xl border border-orange-100">
-                  <div className="flex items-start gap-3">
-                    <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <img 
-                        src="https://www.trailforks.com/favicon.ico" 
-                        alt="Trailforks" 
-                        className="w-4 h-4"
-                      />
-                    </div>
-                    <div>
-                      <h4 className="font-medium text-text-primary text-sm">
-                        Explora más en Trailforks
-                      </h4>
-                      <p className="text-sm text-text-secondary mt-1">
-                        Descubre todos los trails de la zona con mapas detallados, 
-                        condiciones actualizadas y fotos de la comunidad.
-                      </p>
-                      <a 
-                        href={`https://www.trailforks.com/region/andalusia/`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-sm font-medium text-orange-600 hover:text-orange-700 mt-2"
-                      >
-                        Ver región completa
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </a>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -358,23 +293,51 @@ export default function ZoneDetail() {
                   </Link>
                 </div>
 
-                {/* Nearby Stays */}
-                <div>
-                  <h3 className="font-semibold text-text-primary mb-4">
-                    Alojamientos en la zona
+                {/* Zone stats */}
+                <div className="bg-surface rounded-xl p-6 border border-border">
+                  <h3 className="font-semibold text-text-primary mb-4 flex items-center gap-2">
+                    <MapPin className="w-5 h-5 text-accent" />
+                    Info de la zona
                   </h3>
-                  <div className="space-y-4">
-                    {nearbyStays.map((stay) => (
-                      <CardStay key={stay.id} {...stay} />
-                    ))}
+                  <div className="space-y-3 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-text-secondary">Tipo</span>
+                      <span className="font-medium text-text-primary">{zone.type}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-text-secondary">Nivel</span>
+                      <span className="font-medium text-text-primary">{zone.level}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-text-secondary">Mejor época</span>
+                      <span className="font-medium text-text-primary">{zone.bestSeason}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-text-secondary">Runs/día</span>
+                      <span className="font-medium text-text-primary">{zone.runsPerDay}</span>
+                    </div>
                   </div>
-                  <Link to="/alojamientos" className="block mt-4">
-                    <Button variant="ghost" size="sm" className="w-full">
-                      Ver todos los alojamientos
-                      <ArrowRight className="w-4 h-4" />
-                    </Button>
-                  </Link>
                 </div>
+
+                {/* Nearby Stays */}
+                {nearbyStays.length > 0 && (
+                  <div>
+                    <h3 className="font-semibold text-text-primary mb-4">
+                      Alojamientos en la zona
+                    </h3>
+                    <div className="space-y-4">
+                      {nearbyStays.map((stay) => (
+                        <CardStay key={stay.id} {...stay} />
+                      ))}
+                    </div>
+                    <Link to="/alojamientos" className="block mt-4">
+                      <Button variant="ghost" size="sm" className="w-full">
+                        Ver todos los alojamientos
+                        <ArrowRight className="w-4 h-4" />
+                      </Button>
+                    </Link>
+                  </div>
+                )}
               </div>
             </div>
           </div>
