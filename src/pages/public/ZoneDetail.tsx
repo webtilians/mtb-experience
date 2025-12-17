@@ -192,6 +192,40 @@ const zoneData: Record<string, {
       { day: 'Día 4', title: 'Trail final', description: 'Último descenso con vistas al estrecho y tarde libre para kitesurf o playa.' },
     ],
   },
+  'granada': {
+    id: 'granada',
+    title: 'Granada',
+    subtitle: 'Sierra Nevada y la Alhambra como telón de fondo',
+    heroImage: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920',
+    level: 'Avanzado',
+    type: 'Enduro',
+    bestSeason: 'Mayo - Noviembre',
+    runsPerDay: '4-6',
+    description: 'Granada ofrece una experiencia MTB única con Sierra Nevada como escenario. Descensos épicos desde más de 2.500 metros de altitud hasta los valles del Genil, pasando por bosques de castaños y pueblos de la Alpujarra. La combinación de alta montaña, patrimonio cultural (Alhambra, Albaicín) y gastronomía hacen de Granada un destino imprescindible para cualquier rider.',
+    trailforksRegionId: '8835',
+    trailforksUrl: 'https://www.trailforks.com/region/granada/',
+    includes: [
+      'Guía local experto en la zona',
+      'Shuttle a los puntos de inicio en alta montaña',
+      'Planificación de rutas según nivel y condiciones',
+      'Soporte mecánico básico',
+      'Recomendaciones gastronómicas locales',
+      'Seguro de actividad',
+    ],
+    requirements: [
+      'Nivel avanzado recomendado',
+      'Bici de enduro (160-180mm)',
+      'Casco integral obligatorio en descensos',
+      'Protecciones completas',
+      'Ropa de abrigo (alta montaña)',
+    ],
+    itinerary: [
+      { day: 'Día 1', title: 'Llegada y Alhambra', description: 'Check-in, visita opcional a la Alhambra y trail de calentamiento.' },
+      { day: 'Día 2', title: 'Sierra Nevada', description: 'Descenso épico desde Pradollano. 2000m de descenso acumulado.' },
+      { day: 'Día 3', title: 'La Alpujarra', description: 'Trails entre pueblos blancos de montaña. 1800m de descenso.' },
+      { day: 'Día 4', title: 'Trail final', description: 'Último descenso y tapeo por el centro de Granada.' },
+    ],
+  },
 }
 
 // Nearby stays for each zone
@@ -302,6 +336,26 @@ const staysByZone: Record<string, Array<{
       capacity: 8,
       priceRange: '140-180€',
       amenities: ['Parking', 'Piscina', 'Campo privado'],
+    },
+  ],
+  'granada': [
+    {
+      id: 'casa-granada-1',
+      title: 'Casa Sierra Nevada',
+      images: ['https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800'],
+      municipality: 'Monachil',
+      capacity: 6,
+      priceRange: '130-170€',
+      amenities: ['Parking', 'Chimenea', 'Vistas a la sierra'],
+    },
+    {
+      id: 'casa-granada-2',
+      title: 'Cortijo La Alpujarra',
+      images: ['https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?w=800'],
+      municipality: 'Capileira',
+      capacity: 8,
+      priceRange: '150-200€',
+      amenities: ['Parking', 'Terraza', 'Pueblo con encanto'],
     },
   ],
 }

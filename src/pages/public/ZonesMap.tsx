@@ -55,6 +55,16 @@ const zones = [
     description: 'El punto más al sur de Europa: trails con vistas a África y el Estrecho.',
     coords: { lat: 36.0143, lng: -5.6044 },
   },
+  {
+    id: 'granada',
+    title: 'Granada',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800',
+    tags: ['Sierra Nevada', 'Alta montaña', 'Épico'],
+    level: 'Avanzado' as const,
+    type: 'Enduro' as const,
+    description: 'Descensos épicos desde Sierra Nevada. Hasta 2000m de desnivel por bajada.',
+    coords: { lat: 37.1773, lng: -3.5986 },
+  },
 ]
 
 export default function ZonesMap() {

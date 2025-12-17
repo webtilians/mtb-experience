@@ -50,6 +50,15 @@ const featuredZones = [
     type: 'Enduro' as const,
     description: 'El punto más al sur de Europa: trails con vistas a África.',
   },
+  {
+    id: 'granada',
+    title: 'Granada',
+    image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800',
+    tags: ['Sierra Nevada', 'Alta montaña', 'Épico'],
+    level: 'Avanzado' as const,
+    type: 'Enduro' as const,
+    description: 'Descensos épicos desde Sierra Nevada con la Alhambra de fondo.',
+  },
 ]
 
 const steps = [
