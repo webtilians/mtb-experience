@@ -157,34 +157,92 @@ export default function ZonesMap() {
         {viewMode === 'map' ? (
           <div className="flex flex-col lg:flex-row">
             {/* Map */}
-            <div className="lg:flex-1 h-[400px] lg:h-[calc(100vh-200px)] bg-gray-200 relative">
-              {/* Placeholder for actual map implementation */}
-              <div className="absolute inset-0 flex items-center justify-center text-text-secondary">
-                <div className="text-center">
-                  <MapPin className="w-12 h-12 mx-auto mb-2 opacity-50" />
-                  <p>Mapa interactivo</p>
-                  <p className="text-sm">(Integrar Mapbox o Google Maps)</p>
+            <div className="lg:flex-1 h-[400px] lg:h-[calc(100vh-200px)] relative overflow-hidden">
+              {/* Map background image */}
+              <img 
+                src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1200"
+                alt="Mapa de Andalucía"
+                className="absolute inset-0 w-full h-full object-cover opacity-30"
+              />
+              <div className="absolute inset-0 bg-gradient-to-br from-forest-600/20 to-earth-600/20" />
+              
+              {/* Grid overlay for better visibility */}
+              <div className="absolute inset-0" style={{
+                backgroundImage: 'linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px)',
+                backgroundSize: '40px 40px'
+              }} />
+
+              {/* Zone pins with real approximate positions */}
+              {filteredZones.map((zone) => {
+                // Convert coordinates to approximate map positions
+                // Andalucía roughly: lat 36-38, lng -7 to -2
+                const positionMap: Record<string, { left: string; top: string }> = {
+                  'montes-de-malaga': { left: '55%', top: '65%' },
+                  'velez-malaga': { left: '65%', top: '68%' },
+                  'archidona': { left: '58%', top: '50%' },
+                  'marbella': { left: '42%', top: '75%' },
+                  'tarifa': { left: '20%', top: '85%' },
+                  'granada': { left: '75%', top: '45%' },
+                }
+                const pos = positionMap[zone.id] || { left: '50%', top: '50%' }
+                
+                return (
+                  <button
+                    key={zone.id}
+                    onClick={() => setSelectedZone(zone.id)}
+                    className={`absolute flex flex-col items-center transform -translate-x-1/2 -translate-y-full transition-all duration-200 group ${
+                      selectedZone === zone.id ? 'z-20 scale-110' : 'z-10 hover:z-20 hover:scale-105'
+                    }`}
+                    style={{ left: pos.left, top: pos.top }}
+                  >
+                    {/* Pin */}
+                    <div className={`relative ${
+                      selectedZone === zone.id 
+                        ? 'text-accent' 
+                        : 'text-forest-700 group-hover:text-accent'
+                    }`}>
+                      <svg width="40" height="50" viewBox="0 0 40 50" fill="currentColor" className="drop-shadow-lg">
+                        <path d="M20 0C8.954 0 0 8.954 0 20c0 11.046 20 30 20 30s20-18.954 20-30C40 8.954 31.046 0 20 0zm0 28c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z"/>
+                      </svg>
+                      <div className={`absolute top-2.5 left-1/2 -translate-x-1/2 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold ${
+                        selectedZone === zone.id 
+                          ? 'bg-white text-accent' 
+                          : 'bg-white text-forest-700 group-hover:text-accent'
+                      }`}>
+                        {zone.level === 'Avanzado' ? '🔥' : '⭐'}
+                      </div>
+                    </div>
+                    {/* Label */}
+                    <div className={`mt-1 px-2 py-1 rounded-md text-xs font-semibold whitespace-nowrap shadow-md ${
+                      selectedZone === zone.id 
+                        ? 'bg-accent text-white' 
+                        : 'bg-white text-text-primary group-hover:bg-accent group-hover:text-white'
+                    }`}>
+                      {zone.title}
+                    </div>
+                  </button>
+                )
+              })}
+
+              {/* Legend */}
+              <div className="absolute bottom-4 left-4 bg-white/95 backdrop-blur-sm rounded-lg p-3 shadow-lg text-sm">
+                <p className="font-semibold text-text-primary mb-2">Leyenda</p>
+                <div className="space-y-1">
+                  <div className="flex items-center gap-2">
+                    <span>⭐</span>
+                    <span className="text-text-secondary">Intermedio</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span>🔥</span>
+                    <span className="text-text-secondary">Avanzado</span>
+                  </div>
                 </div>
               </div>
 
-              {/* Zone pins simulation */}
-              {filteredZones.map((zone, index) => (
-                <button
-                  key={zone.id}
-                  onClick={() => setSelectedZone(zone.id)}
-                  className={`absolute w-10 h-10 rounded-full flex items-center justify-center transform -translate-x-1/2 -translate-y-1/2 transition-all ${
-                    selectedZone === zone.id
-                      ? 'bg-accent text-white scale-125 z-10'
-                      : 'bg-surface border-2 border-accent text-accent hover:scale-110'
-                  }`}
-                  style={{
-                    left: `${20 + index * 20}%`,
-                    top: `${30 + (index % 2) * 30}%`,
-                  }}
-                >
-                  <MapPin className="w-5 h-5" />
-                </button>
-              ))}
+              {/* Zoom hint */}
+              <div className="absolute top-4 right-4 bg-white/95 backdrop-blur-sm rounded-lg px-3 py-2 shadow-lg text-xs text-text-secondary">
+                Haz clic en una zona para ver detalles
+              </div>
             </div>
 
             {/* Sidebar */}
