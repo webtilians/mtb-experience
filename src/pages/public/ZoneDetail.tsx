@@ -124,6 +124,40 @@ const zoneData: Record<string, {
       { day: 'Día 4', title: 'Despedida', description: 'Trail final y opción de visitar Antequera.' },
     ],
   },
+  'marbella': {
+    id: 'marbella',
+    title: 'Marbella',
+    subtitle: 'Costa del Sol: trails con vistas al mar',
+    heroImage: 'https://images.unsplash.com/photo-1544191696-102dbdaeeaa0?w=1920',
+    level: 'Intermedio',
+    type: 'Enduro',
+    bestSeason: 'Todo el año',
+    runsPerDay: '3-5',
+    description: 'Marbella ofrece una experiencia única: trails que descienden desde las montañas de Sierra Blanca hasta prácticamente la costa. El clima privilegiado permite rodar todo el año. La zona combina senderos técnicos en alta montaña con trails más fluidos en las colinas cercanas al mar. Después de rodar, playa y gastronomía de primer nivel.',
+    trailforksRegionId: '15715',
+    trailforksUrl: 'https://www.trailforks.com/region/marbella/',
+    includes: [
+      'Guía local experto en la zona',
+      'Shuttle a los puntos de inicio',
+      'Planificación de rutas según nivel',
+      'Soporte mecánico básico',
+      'Recomendaciones gastronómicas locales',
+      'Seguro de actividad',
+    ],
+    requirements: [
+      'Nivel intermedio recomendado',
+      'Bici de trail o enduro (130-160mm)',
+      'Casco obligatorio',
+      'Protecciones recomendadas',
+      'Hidratación y snacks',
+    ],
+    itinerary: [
+      { day: 'Día 1', title: 'Llegada y bienvenida', description: 'Check-in, briefing y trail de calentamiento con vistas al mar.' },
+      { day: 'Día 2', title: 'Sierra Blanca', description: 'Descensos desde la sierra con vistas panorámicas. 1300m de descenso.' },
+      { day: 'Día 3', title: 'Trails costeros', description: 'Rutas más técnicas en las colinas cercanas a la costa. 1100m de descenso.' },
+      { day: 'Día 4', title: 'Trail final y playa', description: 'Último descenso y tarde libre en la playa o Puerto Banús.' },
+    ],
+  },
 }
 
 // Nearby stays for each zone
@@ -194,6 +228,26 @@ const staysByZone: Record<string, Array<{
       capacity: 10,
       priceRange: '150-190€',
       amenities: ['Parking', 'Piscina', 'Olivar privado'],
+    },
+  ],
+  'marbella': [
+    {
+      id: 'casa-marbella-1',
+      title: 'Villa Sierra Blanca',
+      images: ['https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800'],
+      municipality: 'Marbella',
+      capacity: 6,
+      priceRange: '180-250€',
+      amenities: ['Parking', 'Piscina', 'Vistas al mar'],
+    },
+    {
+      id: 'casa-marbella-2',
+      title: 'Casa Los Naranjos',
+      images: ['https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800'],
+      municipality: 'Ojén',
+      capacity: 8,
+      priceRange: '150-200€',
+      amenities: ['Parking', 'Jardín', 'BBQ'],
     },
   ],
 }

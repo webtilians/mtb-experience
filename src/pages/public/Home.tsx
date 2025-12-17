@@ -32,6 +32,15 @@ const featuredZones = [
     type: 'Enduro' as const,
     description: 'Comarca Nororiental: trails salvajes y poco transitados.',
   },
+  {
+    id: 'marbella',
+    title: 'Marbella',
+    image: 'https://images.unsplash.com/photo-1544191696-102dbdaeeaa0?w=800',
+    tags: ['Costa', 'Vistas', 'Premium'],
+    level: 'Intermedio' as const,
+    type: 'Enduro' as const,
+    description: 'Costa del Sol: trails con vistas al mar y clima perfecto.',
+  },
 ]
 
 const steps = [

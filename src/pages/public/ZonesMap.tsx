@@ -35,6 +35,16 @@ const zones = [
     description: 'Comarca Nororiental: trails salvajes y poco transitados. Paisaje interior andaluz.',
     coords: { lat: 37.0833, lng: -4.3833 },
   },
+  {
+    id: 'marbella',
+    title: 'Marbella',
+    image: 'https://images.unsplash.com/photo-1544191696-102dbdaeeaa0?w=800',
+    tags: ['Costa', 'Vistas', 'Premium'],
+    level: 'Intermedio' as const,
+    type: 'Enduro' as const,
+    description: 'Costa del Sol: trails con vistas al mar. Sierra Blanca y clima perfecto todo el año.',
+    coords: { lat: 36.5100, lng: -4.8824 },
+  },
 ]
 
 export default function ZonesMap() {
