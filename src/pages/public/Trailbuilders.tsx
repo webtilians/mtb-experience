@@ -276,8 +276,11 @@ export default function Trailbuilders() {
               
               <div className="bg-surface rounded-xl border border-border p-6 mb-6">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-semibold text-text-primary">Jornada Trailbuilder</h3>
-                  <span className="text-2xl font-bold text-accent">25€<span className="text-sm font-normal text-text-secondary">/persona</span></span>
+                  <div>
+                    <h3 className="font-semibold text-text-primary">Jornada Trailbuilder</h3>
+                    <p className="text-xs text-text-secondary">Mínimo 6 personas</p>
+                  </div>
+                  <span className="text-2xl font-bold text-accent">30€<span className="text-sm font-normal text-text-secondary">/persona</span></span>
                 </div>
                 <ul className="space-y-2">
                   {included.map((item, index) => (

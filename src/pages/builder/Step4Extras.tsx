@@ -5,78 +5,72 @@ import Stepper from '../../components/ui/Stepper'
 import Button from '../../components/ui/Button'
 import CardExtra from '../../components/cards/CardExtra'
 
-// Mock data
+// Extras con precios reales
 const extras = [
   {
-    id: 'transfer-airport',
-    title: 'Transfer aeropuerto',
-    description: 'Recogida y/o entrega en aeropuerto de Málaga, Granada o Sevilla.',
-    price: '120€',
-    priceUnit: '/trayecto',
-    isPartner: true,
-    hasQuantity: true,
-    maxQuantity: 2,
-  },
-  {
-    id: 'shuttle',
-    title: 'Uplifts / Shuttles diarios',
-    description: 'Servicio de shuttle para maximizar descensos. Incluye conductor y vehículo.',
-    price: '80€',
-    priceUnit: '/día/grupo',
+    id: 'shuttle-day',
+    title: 'Shuttle Day (sin guía)',
+    description: 'Servicio de shuttle para maximizar descensos. Incluye conductor y vehículo. Mínimo 4 personas.',
+    price: '50€',
+    priceUnit: '/persona/día',
     isPartner: true,
     hasQuantity: true,
     maxQuantity: 7,
+    minPax: 4,
   },
   {
     id: 'trailbuilder-day',
     title: 'Trailbuilder Day 🌱',
-    description: 'Jornada de construcción/mantenimiento de trails. Incluye herramientas, guía experto y almuerzo.',
-    price: '25€',
+    description: 'Jornada de construcción/mantenimiento de trails. Medio día con herramientas, guía experto, bebida y snack. Mínimo 6 personas.',
+    price: '30€',
     priceUnit: '/persona',
     isPartner: false,
     hasQuantity: true,
-    maxQuantity: 8,
+    maxQuantity: 12,
+    minPax: 6,
     highlight: true,
   },
   {
     id: 'food-pack',
-    title: 'Welcome food pack',
-    description: 'Pack de bienvenida con productos locales para el primer día.',
-    price: '45€',
-    priceUnit: '/grupo',
+    title: 'Welcome Food Pack',
+    description: 'Pack de bienvenida con productos locales andaluces para el primer día. Mínimo 4 personas.',
+    price: '12€',
+    priceUnit: '/persona',
     isPartner: false,
-    hasQuantity: false,
+    hasQuantity: true,
+    maxQuantity: 12,
+    minPax: 4,
   },
   {
     id: 'ebike-rental',
     title: 'Alquiler de eMTB',
-    description: 'eBike de enduro de alta gama. Incluye cargador.',
-    price: '80€',
-    priceUnit: '/día/bici',
+    description: 'eBike de enduro de alta gama (Specialized, Trek o similar). Incluye cargador.',
+    price: '65€',
+    priceUnit: '/persona/día',
     isPartner: true,
     hasQuantity: true,
     maxQuantity: 8,
-    pending: true,
   },
   {
     id: 'dh-rental',
-    title: 'Alquiler bici DH',
-    description: 'Bici de descenso para días de bike park o rutas DH.',
-    price: '60€',
-    priceUnit: '/día/bici',
+    title: 'Alquiler Bici DH',
+    description: 'Bici de descenso para días de bike park o rutas DH puras.',
+    price: '70€',
+    priceUnit: '/persona/día',
     isPartner: true,
     hasQuantity: true,
-    maxQuantity: 8,
+    maxQuantity: 6,
   },
   {
     id: 'photo-video',
-    title: 'Foto/Vídeo',
-    description: 'Fotógrafo/videógrafo profesional durante una jornada.',
-    price: '250€',
-    priceUnit: '/día',
+    title: 'Foto/Vídeo Action Day',
+    description: 'Fotógrafo/videógrafo profesional durante una jornada. Vídeo editado + fotos. Mínimo 350€/grupo.',
+    price: '70€',
+    priceUnit: '/persona/día',
     isPartner: true,
-    hasQuantity: false,
-    pending: true,
+    hasQuantity: true,
+    maxQuantity: 10,
+    minPax: 5,
   },
 ]
 
@@ -151,7 +145,6 @@ export default function Step4Extras() {
               isSelected={selectedExtras[extra.id] !== undefined}
               quantity={selectedExtras[extra.id] || 0}
               maxQuantity={extra.maxQuantity}
-              disabled={extra.pending}
               onSelect={!extra.hasQuantity ? () => toggleExtra(extra.id) : undefined}
               onQuantityChange={
                 extra.hasQuantity

@@ -30,14 +30,19 @@ export default function Step5Checkout() {
     }
   }, [])
 
-  // Mock data - would come from state/context
+  // TODO: Obtener estos datos del contexto/localStorage cuando el usuario complete los pasos
   const bookingSummary = {
     zone: 'Ronda / Serranía',
     dates: '15-19 Marzo 2025',
     riders: 6,
-    stay: 'Casa Rural El Molino',
-    guidePack: 'Pack 4 días',
+    days: 4,
+    stay: 'Alojamiento externo (Airbnb/Booking)',
+    guidePack: 'Pack 4 días - Guía + Shuttle',
+    pricePerPersonPerDay: 75, // Precio real
   }
+
+  // Calcular precio del pack guía
+  const guidePackTotal = bookingSummary.pricePerPersonPerDay * bookingSummary.days * bookingSummary.riders
 
   // Calculate extras prices
   const extraPriceItems = selectedExtras
@@ -62,16 +67,17 @@ export default function Step5Checkout() {
       }
     })
 
+  // Tarifa de gestión solo si hay extras
+  const hasExtras = selectedExtras.length > 0
+  const managementFee = hasExtras ? 25 : 0
+
   const priceItems = [
-    { label: 'Pack guía 4 días', amount: '550€' },
-    { label: 'Tarifa de gestión alojamiento', amount: '90€' },
-    ...(extraPriceItems.length > 0 ? [{ label: 'Tarifa de gestión extras', amount: '45€' }] : []),
+    { label: `Guía + Shuttle (${bookingSummary.days} días × ${bookingSummary.riders} personas)`, amount: `${guidePackTotal}€` },
+    ...(managementFee > 0 ? [{ label: 'Tarifa de gestión extras', amount: `${managementFee}€` }] : []),
     ...extraPriceItems,
   ]
 
   const partnerItems = [
-    { label: 'Alojamiento (4 noches)', amount: '560€' },
-    { label: 'Shuttles (3 días)', amount: '240€' },
     ...extraPartnerItems,
   ]
 
@@ -208,13 +214,28 @@ export default function Step5Checkout() {
           {/* Sidebar - Price Summary */}
           <div className="lg:col-span-1">
             <div className="sticky top-24">
-              <PriceSummary
-                items={priceItems}
-                partnerItems={partnerItems}
-                riders={bookingSummary.riders}
-                totalPerPerson="~248€"
-                hasPendingConfirmations={true}
-              />
+              {/* Calcular total por persona dinámicamente */}
+              {(() => {
+                const itemsTotal = priceItems.reduce((acc, item) => {
+                  const amount = parseFloat(item.amount.replace(/[^0-9.-]+/g, ''))
+                  return acc + (isNaN(amount) ? 0 : amount)
+                }, 0)
+                const partnerTotal = partnerItems.reduce((acc, item) => {
+                  const amount = parseFloat(item.amount.replace(/[^0-9.-]+/g, ''))
+                  return acc + (isNaN(amount) ? 0 : amount)
+                }, 0)
+                const totalPerPerson = Math.round((itemsTotal + partnerTotal) / bookingSummary.riders)
+                
+                return (
+                  <PriceSummary
+                    items={priceItems}
+                    partnerItems={partnerItems}
+                    riders={bookingSummary.riders}
+                    totalPerPerson={`~${totalPerPerson}€`}
+                    hasPendingConfirmations={partnerItems.length > 0}
+                  />
+                )
+              })()}
 
               <Button
                 variant="primary"
