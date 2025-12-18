@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight, ArrowLeft } from 'lucide-react'
 import Stepper from '../../components/ui/Stepper'
@@ -81,7 +81,20 @@ const extras = [
 ]
 
 export default function Step4Extras() {
-  const [selectedExtras, setSelectedExtras] = useState<Record<string, number>>({})
+  const [selectedExtras, setSelectedExtras] = useState<Record<string, number>>(() => {
+    const saved = localStorage.getItem('mtb-extras')
+    return saved ? JSON.parse(saved) : {}
+  })
+
+  // Save extras to localStorage whenever they change
+  useEffect(() => {
+    const extrasWithDetails = Object.entries(selectedExtras).map(([id, quantity]) => {
+      const extra = extras.find(e => e.id === id)
+      return extra ? { ...extra, quantity } : null
+    }).filter(Boolean)
+    localStorage.setItem('mtb-extras', JSON.stringify(selectedExtras))
+    localStorage.setItem('mtb-extras-details', JSON.stringify(extrasWithDetails))
+  }, [selectedExtras])
 
   const toggleExtra = (id: string) => {
     setSelectedExtras((prev) => {

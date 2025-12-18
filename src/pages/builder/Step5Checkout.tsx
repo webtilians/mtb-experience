@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { ArrowLeft, Shield, CreditCard } from 'lucide-react'
 import Stepper from '../../components/ui/Stepper'
@@ -6,11 +6,29 @@ import Button from '../../components/ui/Button'
 import PriceSummary from '../../components/ui/PriceSummary'
 import Input from '../../components/ui/Input'
 
+interface ExtraDetail {
+  id: string
+  title: string
+  price: string
+  priceUnit: string
+  quantity: number
+  isPartner: boolean
+}
+
 export default function Step5Checkout() {
   const navigate = useNavigate()
   const [isLoading, setIsLoading] = useState(false)
   const [acceptTerms, setAcceptTerms] = useState(false)
   const [paymentError, setPaymentError] = useState<string | null>(null)
+  const [selectedExtras, setSelectedExtras] = useState<ExtraDetail[]>([])
+
+  // Load extras from localStorage
+  useEffect(() => {
+    const saved = localStorage.getItem('mtb-extras-details')
+    if (saved) {
+      setSelectedExtras(JSON.parse(saved))
+    }
+  }, [])
 
   // Mock data - would come from state/context
   const bookingSummary = {
@@ -21,15 +39,40 @@ export default function Step5Checkout() {
     guidePack: 'Pack 4 días',
   }
 
+  // Calculate extras prices
+  const extraPriceItems = selectedExtras
+    .filter(e => !e.isPartner)
+    .map(e => {
+      const priceNum = parseInt(e.price.replace('€', ''))
+      const total = priceNum * e.quantity
+      return {
+        label: `${e.title} (x${e.quantity})`,
+        amount: `${total}€`
+      }
+    })
+
+  const extraPartnerItems = selectedExtras
+    .filter(e => e.isPartner)
+    .map(e => {
+      const priceNum = parseInt(e.price.replace('€', ''))
+      const total = priceNum * e.quantity
+      return {
+        label: `${e.title} (x${e.quantity})`,
+        amount: `${total}€`
+      }
+    })
+
   const priceItems = [
     { label: 'Pack guía 4 días', amount: '550€' },
     { label: 'Tarifa de gestión alojamiento', amount: '90€' },
-    { label: 'Tarifa de gestión extras', amount: '45€' },
+    ...(extraPriceItems.length > 0 ? [{ label: 'Tarifa de gestión extras', amount: '45€' }] : []),
+    ...extraPriceItems,
   ]
 
   const partnerItems = [
     { label: 'Alojamiento (4 noches)', amount: '560€' },
     { label: 'Shuttles (3 días)', amount: '240€' },
+    ...extraPartnerItems,
   ]
 
   const handlePayment = async () => {
