@@ -13,6 +13,7 @@ export default function Header() {
   const navItems = [
     { label: t('nav.zones'), href: '/zonas' },
     { label: t('nav.stays'), href: '/alojamientos' },
+    { label: 'Trailbuilders', href: '/trailbuilders' },
     { label: 'FAQ', href: '/faq' },
     { label: t('nav.contact'), href: '/contacto' },
   ]

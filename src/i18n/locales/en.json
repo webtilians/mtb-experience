@@ -548,5 +548,66 @@
   "accommodation": {
     "searchExternal": "Prefer to find your own accommodation?",
     "externalDescription": "Search on Airbnb, Booking or other platforms"
+  },
+  "trailbuilders": {
+    "title": "Trailbuilders: Building Community",
+    "subtitle": "Discover the important work of maintaining and building the trails we love",
+    "mission": {
+      "title": "Our Mission",
+      "description": "Trails don't maintain themselves. Behind every amazing trail is a group of dedicated volunteers who work tirelessly to maintain, repair, and improve the routes we enjoy. Trailbuilders are the heart of our MTB community.",
+      "importance": "Without trail building and maintenance work, our favorite routes would disappear under erosion, vegetation, and neglect. Every hour of volunteer work helps preserve these natural spaces for future generations of riders."
+    },
+    "activities": {
+      "title": "What We Do",
+      "clearing": {
+        "title": "Vegetation Clearing",
+        "description": "We clear and maintain trails free of brush and obstacles."
+      },
+      "drainage": {
+        "title": "Drainage & Channeling",
+        "description": "We build water channels to prevent terrain erosion."
+      },
+      "signage": {
+        "title": "Signage",
+        "description": "We install and maintain signs for rider safety."
+      },
+      "erosion": {
+        "title": "Erosion Control",
+        "description": "We reinforce vulnerable areas to preserve trail integrity."
+      },
+      "features": {
+        "title": "Feature Building",
+        "description": "We design and build jumps, berms, and technical elements."
+      },
+      "cleanup": {
+        "title": "Trash Cleanup",
+        "description": "We keep trails and forests free of waste."
+      }
+    },
+    "impact": {
+      "title": "Our Impact",
+      "volunteers": "Active volunteers",
+      "hours": "Work hours",
+      "trails": "Km of maintained trails",
+      "communities": "Local communities"
+    },
+    "giveBack": {
+      "title": "Give Back to the Community",
+      "description": "Want to contribute during your trip? Add a Give Back Day to your MTB experience and join a community work day with local Trailbuilders.",
+      "included": "Includes tools, expert guide, and lunch",
+      "price": "€30",
+      "perPerson": "/person",
+      "addToTrip": "Add to my trip",
+      "benefits": {
+        "title": "What you get:",
+        "item1": "Unique trail building experience",
+        "item2": "Connection with local community",
+        "item3": "Satisfaction of giving back to the trails",
+        "item4": "Participation certificate"
+      }
+    },
+    "gallery": {
+      "title": "Work Gallery"
+    }
   }
 }

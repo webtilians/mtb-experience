@@ -548,5 +548,66 @@
   "accommodation": {
     "searchExternal": "¿Prefieres buscar tu propio alojamiento?",
     "externalDescription": "Busca en Airbnb, Booking u otras plataformas"
+  },
+  "trailbuilders": {
+    "title": "Trailbuilders: Construyendo Comunidad",
+    "subtitle": "Descubre el importante trabajo de mantener y construir los senderos que amamos",
+    "mission": {
+      "title": "Nuestra Misión",
+      "description": "Los senderos no se mantienen solos. Detrás de cada pista increíble hay un grupo de voluntarios dedicados que trabajan incansablemente para mantener, reparar y mejorar las rutas que disfrutamos. Los Trailbuilders son el corazón de nuestra comunidad MTB.",
+      "importance": "Sin el trabajo de construcción y mantenimiento de senderos, nuestras rutas favoritas desaparecerían bajo la erosión, la vegetación y el abandono. Cada hora de trabajo voluntario ayuda a preservar estos espacios naturales para las generaciones futuras de riders."
+    },
+    "activities": {
+      "title": "¿Qué Hacemos?",
+      "clearing": {
+        "title": "Limpieza de Vegetación",
+        "description": "Desbrozamos y mantenemos los senderos libres de maleza y obstáculos."
+      },
+      "drainage": {
+        "title": "Drenaje y Canalización",
+        "description": "Construimos canales de agua para prevenir la erosión del terreno."
+      },
+      "signage": {
+        "title": "Señalización",
+        "description": "Instalamos y mantenemos señales para la seguridad de los riders."
+      },
+      "erosion": {
+        "title": "Control de Erosión",
+        "description": "Reforzamos zonas vulnerables para preservar la integridad del trail."
+      },
+      "features": {
+        "title": "Construcción de Features",
+        "description": "Diseñamos y construimos saltos, peraltes y elementos técnicos."
+      },
+      "cleanup": {
+        "title": "Recogida de Basura",
+        "description": "Mantenemos los senderos y bosques limpios de residuos."
+      }
+    },
+    "impact": {
+      "title": "Nuestro Impacto",
+      "volunteers": "Voluntarios activos",
+      "hours": "Horas de trabajo",
+      "trails": "Km de senderos mantenidos",
+      "communities": "Comunidades locales"
+    },
+    "giveBack": {
+      "title": "Devuelve a la Comunidad",
+      "description": "¿Quieres contribuir durante tu viaje? Añade un día de Give Back a tu experiencia MTB y únete a una jornada de trabajo comunitario con los Trailbuilders locales.",
+      "included": "Incluye herramientas, guía experto y comida",
+      "price": "30€",
+      "perPerson": "/persona",
+      "addToTrip": "Añadir a mi viaje",
+      "benefits": {
+        "title": "Lo que obtienes:",
+        "item1": "Experiencia única de construcción de trails",
+        "item2": "Conexión con la comunidad local",
+        "item3": "Satisfacción de devolver algo a los senderos",
+        "item4": "Certificado de participación"
+      }
+    },
+    "gallery": {
+      "title": "Galería de Trabajo"
+    }
   }
 }

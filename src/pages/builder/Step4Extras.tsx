@@ -28,6 +28,17 @@ const extras = [
     maxQuantity: 7,
   },
   {
+    id: 'trailbuilder-day',
+    title: 'Trailbuilder Day 🌱',
+    description: 'Jornada de construcción/mantenimiento de trails. Incluye herramientas, guía experto y almuerzo.',
+    price: '25€',
+    priceUnit: '/persona',
+    isPartner: false,
+    hasQuantity: true,
+    maxQuantity: 8,
+    highlight: true,
+  },
+  {
     id: 'food-pack',
     title: 'Welcome food pack',
     description: 'Pack de bienvenida con productos locales para el primer día.',

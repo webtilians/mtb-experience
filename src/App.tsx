@@ -6,6 +6,7 @@ import ZoneDetail from './pages/public/ZoneDetail'
 import StaysList from './pages/public/StaysList'
 import StayDetail from './pages/public/StayDetail'
 import ExternalStays from './pages/public/ExternalStays'
+import Trailbuilders from './pages/public/Trailbuilders'
 import FAQ from './pages/public/FAQ'
 import Contact from './pages/public/Contact'
 import Terms from './pages/public/legal/Terms'
@@ -36,6 +37,7 @@ function App() {
         <Route path="alojamientos" element={<StaysList />} />
         <Route path="alojamientos/:stayId" element={<StayDetail />} />
         <Route path="alojamiento-externo" element={<ExternalStays />} />
+        <Route path="trailbuilders" element={<Trailbuilders />} />
         <Route path="faq" element={<FAQ />} />
         <Route path="contacto" element={<Contact />} />
         <Route path="terminos" element={<Terms />} />
